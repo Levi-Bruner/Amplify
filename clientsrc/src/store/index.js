@@ -54,7 +54,6 @@ export default new Vuex.Store({
           .then(res => {
             let results = res.results
               .filter(s => s.kind == "song").map(sd => new Song(sd))
-            debugger
 
             commit("setSearchedSongs", results);
           }).

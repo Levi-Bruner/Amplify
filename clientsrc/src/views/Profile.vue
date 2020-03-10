@@ -15,10 +15,15 @@
       <!-- end row id search -->
     </div>
     <!-- end row -->
+
+    <div id="search-results" class="row">
+      <song v-for="song in searchedSongs" :key="song.id" :songData="song" />
+    </div>
   </div>
 </template>
 
 <script>
+import song from "../components/song";
 export default {
   name: "Profile",
   data() {
@@ -38,6 +43,9 @@ export default {
     searchiTunes() {
       this.$store.dispatch("getMusicByQuery", this.query);
     }
+  },
+  components: {
+    song
   }
 };
 </script>
