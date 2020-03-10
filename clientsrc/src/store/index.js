@@ -1,7 +1,8 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { Store } from "vuex";
 import Axios from "axios";
 import router from "../router";
+import Song from "../models/song";
 
 Vue.use(Vuex);
 
@@ -17,15 +18,19 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    searchedSongs: []
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setSearchedSongs(state, results) {
+      state.searchedSongs = results;
     }
   },
   actions: {
-    setBearer({}, bearer) {
+    setBearer({ }, bearer) {
       api.defaults.headers.authorization = bearer;
     },
     resetBearer() {
@@ -38,6 +43,36 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
+    },
+
+
+    async getMusicByQuery({ commit, dispatch }, query) {
+      try {
+        let url = "https://itunes.apple.com/search?callback=?&term=" + query;
+        // @ts-ignore
+        $.getJSON(url)
+          .then(res => {
+            let results = res.results
+              .filter(s => s.kind == "song").map(sd => new Song(sd))
+            debugger
+
+            commit("setSearchedSongs", results);
+          }).
+          catch(e => {
+            console.log(e)
+          })
+      }
+      catch {
+        (err => {
+          throw new Error(err);
+        })
+      }
     }
+
+
+
+
+
+
   }
 });
