@@ -19,7 +19,9 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     profile: {},
-    searchedSongs: []
+    searchedSongs: [],
+    recommendedSongs: [],
+    favoriteSongs: []
   },
   mutations: {
     setProfile(state, profile) {

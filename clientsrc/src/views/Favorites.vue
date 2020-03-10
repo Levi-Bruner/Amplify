@@ -9,7 +9,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    favorites() {
+      return this.$store.state.favorites;
+    }
+  },
   methods: {},
   components: {}
 };
