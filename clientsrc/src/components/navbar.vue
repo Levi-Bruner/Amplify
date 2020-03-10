@@ -28,6 +28,8 @@
         >
           <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
         </li>
+
+        <!-- NOTE DO THIS ON THE BACK END -->
         <li
           class="nav-item"
           v-if="$auth.isAuthenticated"
@@ -35,16 +37,15 @@
         >
           <router-link class="nav-link" :to="{ name: 'Favorites' }">My Favorites</router-link>
         </li>
+        <!-- and this -->
         <li
           class="nav-item"
           v-if="$auth.isAuthenticated"
-          :class="{ active: $route.name == 'PendingRecs' }"
+          :class="{ active: $route.name == 'Recommends' }"
         >
-          <router-link
-            class="nav-link"
-            :to="{ name: 'PendingRecs' }"
-          >See what your friends recommend</router-link>
+          <router-link class="nav-link" :to="{ name: 'Recommends' }">See what your friends recommend</router-link>
         </li>
+        <!-- end chore here -->
       </ul>
       <span class="navbar-text">
         <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">Login</button>
