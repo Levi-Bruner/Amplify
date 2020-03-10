@@ -14,7 +14,7 @@ class RecommendService {
     return values;
   }
   async findById(id) {
-    let value = await dbContext.Values.findById(id);
+    let value = await dbContext.Recommend.findById(id);
     if (!value) {
       throw new BadRequest("Invalid Id");
     }
