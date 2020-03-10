@@ -1,15 +1,27 @@
 <template>
   <div class="col-12 song">
     <div class="row bg-info p-3">
-      <div class="col-4">
+      <div class="col-12 text-center pb-3">
+        <button>recommend to...</button>
+        <button>add to favorites</button>
+      </div>
+      <div class="col-4 text-center">
         <img :src="songData.albumArtSmall" alt />
       </div>
-      <div class="col-4">
-        <p>{{songData.title}}</p>
+      <div class="col-8 text-left">
+        <p>
+          <b>{{songData.title}}</b>
+        </p>
         <p>{{songData.artist}}</p>
         <p>{{songData.album}}</p>
       </div>
-      <div class="col-4">sample player</div>
+      <div class="col-12">
+        <audio controls>
+          <source :src="songData.preview" type="audio/ogg" />
+        </audio>
+
+        <!-- {{songData.preview}} -->
+      </div>
     </div>
 
     <div class="row">

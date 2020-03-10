@@ -1,6 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'Home' }">AppName</router-link>
+    <router-link class="navbar-brand" :to="{ name: 'Home' }">
+      <img src="../assets/amplify.png" class="img-fluid our-logo" alt />
+      <!-- ../assets/pop.png -->
+      mplify
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -23,6 +27,23 @@
           :class="{ active: $route.name == 'Profile' }"
         >
           <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
+        </li>
+        <li
+          class="nav-item"
+          v-if="$auth.isAuthenticated"
+          :class="{ active: $route.name == 'Favorites' }"
+        >
+          <router-link class="nav-link" :to="{ name: 'Favorites' }">My Favorites</router-link>
+        </li>
+        <li
+          class="nav-item"
+          v-if="$auth.isAuthenticated"
+          :class="{ active: $route.name == 'PendingRecs' }"
+        >
+          <router-link
+            class="nav-link"
+            :to="{ name: 'PendingRecs' }"
+          >See what your friends recommend</router-link>
         </li>
       </ul>
       <span class="navbar-text">
@@ -55,4 +76,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.our-logo {
+  width: 10vw;
+  max-width: 50px;
+  height: auto;
+}
+</style>
