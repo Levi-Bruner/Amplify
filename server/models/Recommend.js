@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+const track = new Schema({
+  trackId: {type: String},
+
+
+})
 
 const Recommend = new Schema(
   {
@@ -7,9 +12,7 @@ const Recommend = new Schema(
     provider: { type: String, required: true },
     reciver: { type: String, required: true },
     listenedTo: { type: Boolean, default: false },
-    track: [{
-
-    }]
+    track: [{ track}]
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
