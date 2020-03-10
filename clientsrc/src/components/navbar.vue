@@ -1,6 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'Home' }">AppName</router-link>
+    <router-link class="navbar-brand" :to="{ name: 'Home' }">
+      <img src="../assets/amplify.png" class="img-fluid our-logo" alt />
+      <!-- ../assets/pop.png -->
+      mplify
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -24,6 +28,24 @@
         >
           <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
         </li>
+
+        <!-- NOTE DO THIS ON THE BACK END -->
+        <li
+          class="nav-item"
+          v-if="$auth.isAuthenticated"
+          :class="{ active: $route.name == 'Favorites' }"
+        >
+          <router-link class="nav-link" :to="{ name: 'Favorites' }">My Favorites</router-link>
+        </li>
+        <!-- and this -->
+        <li
+          class="nav-item"
+          v-if="$auth.isAuthenticated"
+          :class="{ active: $route.name == 'Recommends' }"
+        >
+          <router-link class="nav-link" :to="{ name: 'Recommends' }">See what your friends recommend</router-link>
+        </li>
+        <!-- end chore here -->
       </ul>
       <span class="navbar-text">
         <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">Login</button>
@@ -55,4 +77,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.our-logo {
+  width: 10vw;
+  max-width: 50px;
+  height: auto;
+}
+</style>
