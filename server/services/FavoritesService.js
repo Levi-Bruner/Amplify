@@ -8,7 +8,7 @@ class FavoritesService {
   }
 
   async getById(id, userEmail) {
-    let data = await dbContext.Favorites.findOne({ _id: id, creatorEmail: userEmail })
+    let data = await dbContext.Favorites.findOne({ _id: id, creatorEmail: userEmail }).populate("creator", "name picture")
     if (!data) {
       throw new BadRequest("Invalid ID")
     }
