@@ -1,7 +1,8 @@
 import mongoose from "mongoose"
 let Schema = mongoose.Schema
-let ObjectId = Schema.Types.ObjectId
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
+// NOTE Check with instructors about relationships
 const Recommend = new Schema({
   trackId:{type: String, required: true },
   sender: [{ type: String, required: true }],
