@@ -65,7 +65,6 @@ export default {
       await this.$auth.loginWithPopup();
       if (this.$auth.isAuthenticated) {
         this.$store.dispatch("setBearer", this.$auth.bearer);
-        console.log(this.$auth.user);
         this.$store.dispatch("getProfile");
       }
     },

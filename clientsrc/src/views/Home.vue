@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>Welcome to Your Vue.js App</h1>
+  <div class="home text-center">
+    <h1>Welcome to Amplify</h1>
   </div>
 </template>
 
@@ -10,3 +9,9 @@ export default {
   name: "home"
 };
 </script>
+
+<style>
+h1 {
+  color: white;
+}
+</style>

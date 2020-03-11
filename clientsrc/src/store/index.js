@@ -52,8 +52,6 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-
-
     async getMusicByQuery({ commit, dispatch }, query) {
       try {
         let url = "https://itunes.apple.com/search?callback=?&term=" + query;
@@ -75,43 +73,43 @@ export default new Vuex.Store({
         })
       }
     },
-
-    async getFavoritesbyEmail({ commit, dispatch }) {
-      try {
-        //WAITING ON BACKEND TO FIX THIS 
-        let res = await api.get("favorites")
-
-        console.log(res.data)
-        for (let i = 0; i < res.data.length; i++) {
-          let trackId = res.data[i].trackId
-          let url = "https://itunes.apple.com/search?callback=?&term=" + trackId
-          $.getJSON(url)
-            .then(res => {
-              let results = res.results
-                .filter(s => s.kind == "song").map(sd => new Song(sd)).
-                catch(e => {
-                  console.log(e)
-                })
-
-            }
-
-
-        //commit("setFavorites", res.data)
-      } catch (error) {
-          console.error(error);
-        }
-      },
-
-      async addToFavorites({ commit, dispatch }, newFavorite) {
-        debugger
-        let res = await api.post("favorites", newFavorite)
-        commit("addFavorite", res.data)
-      }
-
-
-
-
-
-
+    async addToFavorites({ commit, dispatch }, newFavorite) {
+      debugger
+      let res = await api.post("favorites", newFavorite)
+      commit("addFavorite", res.data)
     }
-  });
+
+    // async getFavoritesbyEmail({ commit, dispatch }) {
+    //   try {
+    //     //WAITING ON BACKEND TO FIX THIS 
+    //     let res = await api.get("favorites")
+
+    //     console.log(res.data)
+    //     for (let i = 0; i < res.data.length; i++) {
+    //       let trackId = res.data[i].trackId
+    //       let url = "https://itunes.apple.com/search?callback=?&term=" + trackId
+    //       $.getJSON(url)
+    //         .then(res => {
+    //           let results = res.results
+    //             .filter(s => s.kind == "song").map(sd => new Song(sd)).
+    //             catch(e => {
+    //               console.log(e)
+    //             })
+
+    //         }
+
+
+    //     //commit("setFavorites", res.data)
+    //   } catch (error) {
+    //       console.error(error);
+    //     }
+    //   },
+
+
+
+
+
+
+
+  }
+});
