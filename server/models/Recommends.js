@@ -4,21 +4,37 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // NOTE Check with instructors about relationships
 const Recommend = new Schema({
-  trackId:{type: String, required: true },
-  sender: [{ type: String, required: true }],
-  receiver: [{ type: String, required: true }],
-  listened: {type: Boolean, default: false}
+  trackId: {
+    type: String,
+    required: true
+  },
+  sender: {
+    type: String,
+    required: true
+  },
+  receiver: {
+    type: String,
+    required: true
+  },
+  listened: {
+    type: Boolean,
+    default: false
+  }
 
-}, { timestamps: true, toJSON: { virtuals: true } })
+}, {
+  timestamps: true,
+  toJSON: {
+    virtuals: true
+  }
+})
 
 
-Recommend.virtual("creator",
-  {
-    localField: "creatorEmail",
-    ref: "Profile",
-    foreignField: "email",
-    justOne: true
-  })
+Recommend.virtual("creator", {
+  localField: "creatorEmail",
+  ref: "Profile",
+  foreignField: "email",
+  justOne: true
+})
 
 
 
