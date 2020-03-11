@@ -11,12 +11,12 @@ import { favoritesService } from '../services/FavoritesService'
 export class FavoritesController extends BaseController {
   constructor() {
     super("api/favorites")
-    this.router = express.Router()
-      .use(auth0provider.getAuthorizedUserInfo)
-      .get('', this.getAll)
-      .get('/:id', this.getById)
-      .post('', this.create)
-      .delete('/:id', this.delete)
+    this.router
+   .use(auth0provider.getAuthorizedUserInfo)
+    .get('', this.getAll)
+    .get('/:id', this.getById)
+    .post('', this.create)
+    .delete('/:id', this.delete)
   }
 
 
