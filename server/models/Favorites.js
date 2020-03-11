@@ -4,9 +4,8 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 const Favorite = new Schema({
-  trackId: {
-    type: ObjectId,
-    ref: 'Song',
+  songId: {
+    type: String,
     required: true
   },
   creatorEmail: {

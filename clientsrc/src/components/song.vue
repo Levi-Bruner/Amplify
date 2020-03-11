@@ -34,12 +34,13 @@
 
 
 <script>
+import Song from "../models/song.js";
 export default {
   name: "song",
   props: ["songData"],
   data() {
     return {
-      newFavorite: {}
+      newFavorite: new Song()
     };
   },
   computed: {
@@ -52,12 +53,16 @@ export default {
   },
   methods: {
     addToFavorites() {
-      // let who = this.profile.email;
-      // let trackId = this.$props.songData.id;
-
       this.newFavorite = {
-        trackId: this.$props.songData.id,
-        creatorEmail: this.profile.email
+        artist: this.songData.artist,
+        album: this.songData.album,
+        title: this.songData.title,
+        preview: this.songData.preview,
+        price: this.songData.price,
+        songId: this.songData.id,
+        albumArt: this.songData.albumArt,
+        albumArtSmall: this.songData.albumArtSmall,
+        albumArtLarge: this.songData.albumArtLarge
       };
       this.$store.dispatch("addToFavorites", this.newFavorite);
     }
@@ -69,6 +74,6 @@ export default {
 
 <style scoped>
 .bg-pers {
-  background-color: rgba(162, 51, 218, 0.2);
+  background-color: rgba(162, 51, 218, 0.35);
 }
 </style>

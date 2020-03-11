@@ -1,16 +1,11 @@
 <template>
   <div class="container-fluid about text-center text-light">
-    <div class="row justify-content-between">
+    <div class="row justify-content-between pt-2">
       <div class="col-3">
         <p>Score#</p>
       </div>
       <div class="col-3">
-        <img
-          class="my-img"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwB7Ehif1xIFO1s_c9gr2asDoIeRQlmw1eMITaefMJ7iCO5iE9"
-          alt
-        />
-        <!-- <p>maybe notify</p> -->
+        <i class="icon-large far fa-bell fa-3x"></i>
       </div>
     </div>
     <h1 class="text-light">Welcome {{ profile.name }}</h1>
@@ -18,16 +13,14 @@
     <p>{{ profile.email }}</p>
 
     <div id="search" class="row">
-      <div class="col-12 text-left">
-        <p>search here to make a recommendation:</p>
-        <form class="row" @submit.prevent="searchiTunes">
+      <div class="col-12 justify-content-center">
+        <p>search here...</p>
+        <form class="row justify-content-center" @submit.prevent="searchiTunes">
           <input class type="text" placeholder="search for tracks" v-model="query" />
           <button class="btn btn-secondary" type="submit">Search</button>
         </form>
       </div>
-      <!-- end row id search -->
     </div>
-    <!-- end row -->
 
     <div id="search-results" class="row">
       <song v-for="song in searchedSongs" :key="song.id" :songData="song" />

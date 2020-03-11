@@ -1,6 +1,6 @@
 <template>
-  <div class="component">
-    Favorites Page
+  <div class="component text-center">
+    <h1>My Favorites</h1>
     <song v-for="song in favorites" :key="song.id" :songData="song" />
   </div>
 </template>
@@ -32,5 +32,8 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
+h5 {
+  color: white;
+}
 </style>
