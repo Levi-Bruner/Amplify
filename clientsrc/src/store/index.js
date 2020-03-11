@@ -21,7 +21,7 @@ export default new Vuex.Store({
     profile: {},
     searchedSongs: [],
     recommendedSongs: [],
-    favoriteSongs: []
+    favoriteSongs: [],
   },
   mutations: {
     setProfile(state, profile) {
@@ -29,7 +29,13 @@ export default new Vuex.Store({
     },
     setSearchedSongs(state, results) {
       state.searchedSongs = results;
-    }
+    },
+    addFavorite(state, favData) {
+      state.favoriteSongs.push(favData)
+    },
+    setFavorites(state, favorites) {
+      state.favoriteSongs = favorites
+    },
   },
   actions: {
     setBearer({ }, bearer) {
@@ -68,6 +74,21 @@ export default new Vuex.Store({
           throw new Error(err);
         })
       }
+    },
+
+    async getFavoritesbyEmail({ commit, dispatch }) {
+      try {
+        let res = await api.get("favorites")
+        commit("setFavorites", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async addToFavorites({ commit, dispatch }, newFavorite) {
+      debugger
+      let res = await api.post("favorites", newFavorite)
+      commit("addFavorite", res.data)
     }
 
 
