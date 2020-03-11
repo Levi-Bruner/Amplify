@@ -6,15 +6,15 @@ import {
 } from "../utils/Errors"
 
 
-class FavoritesService {
+class SongsService {
   async getAll(userEmail) {
-    return await dbContext.Favorites.find({
+    return await dbContext.Songs.find({
       creatorEmail: userEmail
     }).populate("creator", "name picture")
   }
 
   async getById(id, userEmail) {
-    let data = await dbContext.Favorites.findOne({
+    let data = await dbContext.Songs.findOne({
       _id: id,
       creatorEmail: userEmail
     }).populate("creator", "name picture")
@@ -25,14 +25,14 @@ class FavoritesService {
   }
 
   async create(rawData) {
-    let data = await dbContext.Favorites.create(rawData)
+    let data = await dbContext.Songs.create(rawData)
     return data
   }
 
 
 
   async delete(id, userEmail) {
-    let data = await dbContext.Favorites.findOneAndRemove({
+    let data = await dbContext.Songs.findOneAndRemove({
       _id: id,
       creatorEmail: userEmail
     });
@@ -44,4 +44,4 @@ class FavoritesService {
 }
 
 
-export const favoritesService = new FavoritesService()
+export const songsService = new SongsService()
