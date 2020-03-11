@@ -7,14 +7,12 @@ import SongSchema from "../models/Songs";
 
 
 
-
 class DbContext {
   Values = mongoose.model("Value", ValueSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
   Favorites = mongoose.model("Favorite", FavoriteSchema);
   Recommends = mongoose.model("Recommend", RecommendSchema);
   Songs = mongoose.model("Song", SongSchema);
-
 
 
 }
