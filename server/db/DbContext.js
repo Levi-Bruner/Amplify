@@ -3,11 +3,10 @@ import ValueSchema from "../models/Value";
 import ProfileSchema from "../models/Profile";
 
 
-
-
 class DbContext {
   Values = mongoose.model("Value", ValueSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
+
 
 }
 
