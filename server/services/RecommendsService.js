@@ -2,13 +2,13 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 
-class RecommendssService {
+class RecommendsService {
   async getAll(userEmail) {
     return await dbContext.Recommends.find({ creatorEmail: userEmail }).populate("creator", "name picture")
   }
 
   async getById(id, userEmail) {
-    let data = await dbContext.Recommends.findOne({ _id: id, creatorEmail: userEmail })
+    let data = await dbContext.Recommends.findOne({ _id: id, creatorEmail: userEmail }).populate("creator", "name picture")
     if (!data) {
       throw new BadRequest("Invalid ID")
     }
@@ -32,4 +32,4 @@ class RecommendssService {
 }
 
 
-export const recommendsService = new RecommendssService()
+export const recommendsService = new RecommendsService()
