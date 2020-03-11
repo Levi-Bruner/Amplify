@@ -2,59 +2,51 @@ import express from "express";
 import BaseController from "../utils/BaseController";
 import { userDataService } from "../services/UserDataService";
 import auth0Provider from "@bcwdev/auth0provider";
+import UserData from "../models/UserData";
 
 export class UserDataController extends BaseController {
   constructor() {
-    super("api/UserData");
+    super("api/userData");
     this.router
-      // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(auth0Provider.getAuthorizedUserInfo)
-      .get("/:creatorEmail/favorites", this.getFavorites)
-      .get("/:creatorEmail/postiveRecommends", this.getPositiveRecommends)
-      .get("/:creatorEmail/totalRecommends", this.getTotalRecommends)
-      .put("/creatorEmail/editPostiveRecommends", this.editPositiveReccommends)
-      .put("/creatorEmail/editTotalRecommends", this.editTotalReccommends)
-      .put("/creatorEmail/editUserName", this.editUserName)
-      .post("/creatorEmail/setUserName", this.setUserName)
+      .get("", this.getAll)
+      .get(":/creatorEmail/email", this.getAllUserData)
+      .put("/:id/editPositive", this.editPositiveRecommend)
+      .put("/:creatorEmail/editTotalRecommends", this.editTotalRecommends)
+      .put("/:creatorEmail/editUserName", this.editUserName)
+      .post("/:creatorEmail/setUserName", this.setUserName)
       .post("", this.create);
   }
-  async getFavorites(req, res, next) {
+  async getAll(req, res, next) {
     try {
+      let data = await userDataService.getAll(req.userInfo.email)
+      return res.sent(data)
+    } catch (error) { next(error) }
+  }
+
+  async getAllUserData(req, res, next) {
+    try {
+      // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email;
-      let UserData = await userDataService.getFavorites(req.userinfo.email)
+      let UserData = await userDataService.getAllUserData(req.body.creatorEmail);
+      res.send(UserData);
     } catch (error) {
       next(error);
     }
   }
 
-  async getPositiveRecommends(req, res, next) {
+  async editPositiveRecommend(req, res, next) {
     try {
-      req.body.creatorEmail = req.userInfo.email;
-      let UserData = await userDataService.getPositiveRecommends(req.body.creatorEmail)
-    } catch (error) {
-      next(error);
-    }
-  }
 
-  async getTotalRecommends(req, res, next) {
-    try {
-      req.body.creatorEmail = req.userInfo.email;
-      let UserData = await userDataService.getTotalRecommends(req.userInfo.email)
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  async editPositiveReccommends(req, res, next) {
-    try {
-      let UserData = await userDataService.editPositive(req.params.id, req.userinfo.email, req.body)
-      return res.send(UserData)
+      let data = req.body.postiveRecommend
+      let postiveRecommend = await userDataService.editPositive(req.params.id, data)
+      return res.send(postiveRecommend)
     } catch (error) {
       next(error)
     }
   }
 
-  async editTotalReccommends(req, res, next) {
+  async editTotalRecommends(req, res, next) {
     try {
       let UserData = await userDataService.editTotal(req.params.id, req.userinfo.email, req.body)
       return res.send(UserData)
@@ -77,8 +69,6 @@ export class UserDataController extends BaseController {
       return res.status(201).send(UserData)
     } catch (error) { next(error) }
   }
-
-
   async create(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
@@ -89,3 +79,6 @@ export class UserDataController extends BaseController {
     }
   }
 }
+
+
+
