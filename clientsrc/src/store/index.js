@@ -1,7 +1,8 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { Store } from "vuex";
 import Axios from "axios";
 import router from "../router";
+import Song from "../models/song";
 
 Vue.use(Vuex);
 
@@ -17,15 +18,27 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    searchedSongs: [],
+    recommendedSongs: [],
+    favoriteSongs: [],
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
-    }
+    },
+    setSearchedSongs(state, results) {
+      state.searchedSongs = results;
+    },
+    addFavorite(state, favData) {
+      state.favoriteSongs.push(favData)
+    },
+    setFavorites(state, favorites) {
+      state.favoriteSongs = favorites
+    },
   },
   actions: {
-    setBearer({}, bearer) {
+    setBearer({ }, bearer) {
       api.defaults.headers.authorization = bearer;
     },
     resetBearer() {
@@ -38,6 +51,67 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
+    },
+
+
+    async getMusicByQuery({ commit, dispatch }, query) {
+      try {
+        let url = "https://itunes.apple.com/search?callback=?&term=" + query;
+        // @ts-ignore
+        $.getJSON(url)
+          .then(res => {
+            let results = res.results
+              .filter(s => s.kind == "song").map(sd => new Song(sd))
+
+            commit("setSearchedSongs", results);
+          }).
+          catch(e => {
+            console.log(e)
+          })
+      }
+      catch {
+        (err => {
+          throw new Error(err);
+        })
+      }
+    },
+
+    async getFavoritesbyEmail({ commit, dispatch }) {
+      try {
+        //WAITING ON BACKEND TO FIX THIS 
+        let res = await api.get("favorites")
+
+        console.log(res.data)
+        for (let i = 0; i < res.data.length; i++) {
+          let trackId = res.data[i].trackId
+          let url = "https://itunes.apple.com/search?callback=?&term=" + trackId
+          $.getJSON(url)
+            .then(res => {
+              let results = res.results
+                .filter(s => s.kind == "song").map(sd => new Song(sd)).
+                catch(e => {
+                  console.log(e)
+                })
+
+            }
+
+
+        //commit("setFavorites", res.data)
+      } catch (error) {
+          console.error(error);
+        }
+      },
+
+      async addToFavorites({ commit, dispatch }, newFavorite) {
+        debugger
+        let res = await api.post("favorites", newFavorite)
+        commit("addFavorite", res.data)
+      }
+
+
+
+
+
+
     }
-  }
-});
+  });
