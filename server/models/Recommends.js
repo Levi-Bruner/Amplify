@@ -7,6 +7,7 @@ const Recommend = new Schema({
   trackId:{type: String, required: true },
   sender: [{ type: String, required: true }],
   receiver: [{ type: String, required: true }],
+  listened: {type: Boolean, default: false}
 
 }, { timestamps: true, toJSON: { virtuals: true } })
 
