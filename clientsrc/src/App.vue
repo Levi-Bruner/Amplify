@@ -25,7 +25,9 @@ export default {
 
 <style>
 .bg-whole {
-  background-color: black;
+  /* background-color: black; */
+  background-image: url(https://silviahartmann.com/background-tile-art/images/black_water_tile.jpg);
+  /* filter: blur(10px); */
   min-height: 100vh;
   height: 100%;
 }

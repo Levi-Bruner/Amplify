@@ -69,6 +69,6 @@ export default {
 
 <style scoped>
 .bg-pers {
-  background-color: rgba(162, 51, 218, 0.7);
+  background-color: rgba(162, 51, 218, 0.2);
 }
 </style>
