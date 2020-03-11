@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid about text-center">
+  <div class="container-fluid about text-center text-light">
     <div class="row justify-content-between">
       <div class="col-3">
         <p>Score#</p>
@@ -13,7 +13,7 @@
         <!-- <p>maybe notify</p> -->
       </div>
     </div>
-    <h1>Welcome Username {{ profile.name }}</h1>
+    <h1 class="text-light">Welcome {{ profile.name }}</h1>
     <img class="rounded" :src="profile.picture" alt />
     <p>{{ profile.email }}</p>
 
@@ -22,7 +22,7 @@
         <p>search here to make a recommendation:</p>
         <form class="row" @submit.prevent="searchiTunes">
           <input class type="text" placeholder="search for tracks" v-model="query" />
-          <button class type="submit">Search</button>
+          <button class="btn btn-secondary" type="submit">Search</button>
         </form>
       </div>
       <!-- end row id search -->
