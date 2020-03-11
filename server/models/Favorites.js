@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+const ObjectId = mongoose.Schema.Types.ObjectId;
+
 
 const Favorite = new Schema({
   trackId: {
-    type: String,
+    type: ObjectId,
+    ref: 'Song',
     required: true
   },
   creatorEmail: {
