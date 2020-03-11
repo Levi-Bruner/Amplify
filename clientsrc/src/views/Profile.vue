@@ -5,7 +5,12 @@
         <p>Score#</p>
       </div>
       <div class="col-3">
-        <p>maybe notification</p>
+        <img
+          class="my-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSwB7Ehif1xIFO1s_c9gr2asDoIeRQlmw1eMITaefMJ7iCO5iE9"
+          alt
+        />
+        <!-- <p>maybe notify</p> -->
       </div>
     </div>
     <h1>Welcome Username {{ profile.name }}</h1>
@@ -61,5 +66,8 @@ export default {
 <style scoped>
 img {
   max-width: 100px;
+}
+.my-img {
+  max-width: 70%;
 }
 </style>
