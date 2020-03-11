@@ -20,8 +20,6 @@ class RecommendsService {
     return data
   }
 
- 
-
   async delete(id, userEmail) {
     let data = await dbContext.Recommends.findOneAndRemove({ _id: id, creatorEmail: userEmail });
     if (!data) {
