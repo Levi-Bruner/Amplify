@@ -1,14 +1,14 @@
 import mongoose from "mongoose"
 let Schema = mongoose.Schema
-// const ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // NOTE Check with instructors about relationships
 const Recommend = new Schema({
-  // trackObjId: {
-  //   type: Object,
+  song: {
+    type: Object,
+    required: true
 
-
-  // },
+  },
   sender: {
     type: String,
     required: true

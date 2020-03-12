@@ -17,7 +17,7 @@ class RecommendsService {
   }
   async getAll(userEmail) {
     return await dbContext.Recommends.find({
-      creatorEmail: userEmail
+      receiver: userEmail
     }).populate("creator", "name picture")
   }
 
