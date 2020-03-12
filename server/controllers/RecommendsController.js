@@ -17,8 +17,10 @@ export class RecommendsController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get("/:creatorEmail/getRecommends", this.getByRecevierEmail)
       .post('', this.create)
       .delete('/:id', this.delete)
+      .put("/:creatorEmail")
   }
 
 
@@ -38,6 +40,14 @@ export class RecommendsController extends BaseController {
     } catch (error) {
       next(error)
     }
+  }
+
+  async getByRecevierEmail(req, res, next) {
+    try {
+      req.body.creatorEmail = req.userInfo.email;
+      let recommends = await recommendsService.getByRecevierEmail(req.body.creatorEmail);
+      res.send(recommends)
+    } catch (error) { next(error) }
   }
 
 

@@ -4,10 +4,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // NOTE Check with instructors about relationships
 const Recommend = new Schema({
-  trackId: {
+  trackObjId: {
     type: ObjectId,
     ref: 'Song',
-    required: true
+
   },
   sender: {
     type: String,
