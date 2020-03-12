@@ -19,11 +19,8 @@
         <audio controls>
           <source :src="songData.Song.preview" type="audio/ogg" />
         </audio>
-
-        <!-- {{songData.Song.preview}} -->
       </div>
     </div>
-
     <div class="row">
       <div class="col-12">
         <br />
@@ -34,23 +31,13 @@
 
 
 <script>
-import Song from "../models/song.js";
 export default {
   name: "song",
   props: ["songData"],
   data() {
-    return {
-      newFavorite: new Song()
-    };
+    return {};
   },
-  computed: {
-    songs() {
-      return this.$store.state.searchedSongs;
-    },
-    profile() {
-      return this.$store.state.profile;
-    }
-  },
+  computed: {},
   methods: {
     removeFromFavorites() {
       this.$store.dispatch("deleteFavorite", this.songData.id);
