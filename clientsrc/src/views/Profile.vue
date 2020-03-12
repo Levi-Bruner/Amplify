@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div id="search-results" class="row">
+    <div id="search-results" class="row justify-content-center">
       <song v-for="song in searchedSongs" :key="song.id" :songData="song" />
     </div>
   </div>

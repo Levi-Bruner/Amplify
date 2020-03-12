@@ -1,7 +1,9 @@
 <template>
-  <div class="component text-center">
+  <div class="container-fluid text-center">
     <h1>My Favorites</h1>
-    <songs v-for="song in favorites" :key="song.id" :songData="song" />
+    <div class="row justify-content-center">
+      <songs v-for="song in favorites" :key="song.id" :songData="song" />
+    </div>
   </div>
 </template>
 
