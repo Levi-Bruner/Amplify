@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 song">
+  <div class="col-11 song">
     <div class="row bg-pers p-3">
       <div class="col-12 text-center pb-3">
         <button class="btn btn-sm btn-primary">recommend to...</button>
