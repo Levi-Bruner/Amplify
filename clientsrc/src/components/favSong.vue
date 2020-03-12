@@ -2,7 +2,7 @@
   <div class="col-11 song">
     <div class="row bg-pers p-3">
       <div class="col-12 text-center pb-3">
-        <button class="btn btn-sm btn-primary">recommend to...</button>
+        <button class="btn btn-sm btn-primary" @click="recommendTo">recommend to...</button>
         <button class="btn btn-sm btn-secondary" @click="removeFromFavorites">remove</button>
       </div>
       <div class="col-4 text-center">
@@ -41,6 +41,17 @@ export default {
   methods: {
     removeFromFavorites() {
       this.$store.dispatch("deleteFavorite", this.songData.id);
+    },
+    recommendTo() {
+      let song = this.songData;
+      this.$swal({
+        title: "Recommend this song to...",
+        input: "email",
+        inputPlaceholder: "Enter your friend's email",
+        showCloseButton: true
+      }).then(email => {
+        this.$store.dispatch("recommendTo", { email, song });
+      });
     }
   },
   components: {}
