@@ -7,8 +7,9 @@ import {
 
 
 class RecommendsService {
-  async getByRecevierEmail(email) {
-    let recommends = await dbContext.Recommends.find({ recevier: email })
+  async getByRecevierEmail(userEmail) {
+
+    let recommends = await dbContext.Recommends.find({ recevier: userEmail })
     if (!recommends) {
       throw new BadRequest("Invalid email")
     }

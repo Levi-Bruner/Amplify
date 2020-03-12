@@ -44,9 +44,8 @@ export class RecommendsController extends BaseController {
 
   async getByRecevierEmail(req, res, next) {
     try {
-      req.body.creatorEmail = req.userInfo.email;
-      let recommends = await recommendsService.getByRecevierEmail(req.body.creatorEmail);
-      res.send(recommends)
+      let data = await recommendsService.getByRecevierEmail(req.userInfo.email)
+
     } catch (error) { next(error) }
   }
 
