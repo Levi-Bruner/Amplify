@@ -7,9 +7,17 @@ import {
 
 
 class RecommendsService {
+  async getByRecevierEmail(userEmail) {
+
+    let recommends = await dbContext.Recommends.find({ recevier: userEmail })
+    if (!recommends) {
+      throw new BadRequest("Invalid email")
+    }
+    return recommends
+  }
   async getAll(userEmail) {
     return await dbContext.Recommends.find({
-      creatorEmail: userEmail
+      receiver: userEmail
     }).populate("creator", "name picture")
   }
 

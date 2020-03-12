@@ -4,10 +4,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // NOTE Check with instructors about relationships
 const Recommend = new Schema({
-  trackId: {
-    type: ObjectId,
-    ref: 'Song',
+  song: {
+    type: Object,
     required: true
+
   },
   sender: {
     type: String,
@@ -20,6 +20,9 @@ const Recommend = new Schema({
   listened: {
     type: Boolean,
     default: false
+  },
+  creatorEmail: {
+    type: String, required: true
   }
 
 }, {
