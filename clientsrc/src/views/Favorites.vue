@@ -9,7 +9,7 @@
 <script>
 import songs from "../components/favSong";
 export default {
-  name: "component",
+  name: "Favorites",
   mounted() {
     return this.$store.dispatch("getFavoritesByEmail");
   },

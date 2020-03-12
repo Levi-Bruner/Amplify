@@ -19,8 +19,6 @@
         <audio controls>
           <source :src="songData.preview" type="audio/ogg" />
         </audio>
-
-        <!-- {{songData.preview}} -->
       </div>
     </div>
 
@@ -34,14 +32,12 @@
 
 
 <script>
-import Song from "../models/song.js";
+import NotificationService from "../../../server/services/NotificationService.js";
 export default {
   name: "song",
   props: ["songData"],
   data() {
-    return {
-      newFavorite: new Song()
-    };
+    return {};
   },
   computed: {
     songs() {
@@ -65,6 +61,7 @@ export default {
         albumArtLarge: this.songData.albumArtLarge
       };
       this.$store.dispatch("addToFavorites", this.newFavorite);
+      NotificationService.toast;
     }
   },
   components: {}
