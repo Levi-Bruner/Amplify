@@ -84,6 +84,14 @@ export default new Vuex.Store({
     async deleteFavorite({ commit, dispatch }, id) {
       let res = await api.delete("favorites/" + id)
       dispatch("getFavoritesByEmail")
+    },
+    async recommendTo({ commit, dispatch }, { email, song }) {
+      debugger
+      let obj = {
+        receiver: email,
+        song: song.Song
+      }
+      let res = await api.post("recommends", obj)
     }
 
 
