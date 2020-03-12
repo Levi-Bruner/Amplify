@@ -1,17 +1,17 @@
 <template>
   <div class="component text-center">
     <h1>My Favorites</h1>
-    <song v-for="song in favorites" :key="song.id" :songData="song" />
+    <songs v-for="song in favorites" :key="song.id" :songData="song" />
   </div>
 </template>
 
 
 <script>
-import songs from "../components/song";
+import songs from "../components/favSong";
 export default {
   name: "component",
   mounted() {
-    return this.$store.dispatch("getFavoritesbyEmail", this.profile.email);
+    return this.$store.dispatch("getFavoritesByEmail");
   },
   data() {
     return {};
