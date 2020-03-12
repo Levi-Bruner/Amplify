@@ -74,8 +74,7 @@ export default new Vuex.Store({
       }
     },
     async addToFavorites({ commit, dispatch }, newFavorite) {
-      debugger
-      let res = await api.post("favorites", newFavorite)
+      let res = await api.post("favorites", { Song: newFavorite })
       commit("addFavorite", res.data)
     }
 
