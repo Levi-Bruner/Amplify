@@ -36,6 +36,9 @@ export default new Vuex.Store({
     setFavorites(state, favorites) {
       state.favoriteSongs = favorites
     },
+    setRecommends(state, recommends) {
+      state.recommendedSongs = recommends
+    }
   },
   actions: {
     setBearer({ }, bearer) {
@@ -86,12 +89,31 @@ export default new Vuex.Store({
       dispatch("getFavoritesByEmail")
     },
     async recommendTo({ commit, dispatch }, { email, song }) {
-      debugger
+      //debugger
       let obj = {
-        receiver: email,
-        song: song.Song
+        receiver: email.value,
+        song: song.Song,
+        sender: song.creatorEmail
       }
       let res = await api.post("recommends", obj)
+    },
+
+    async recommendToFromSearch({ commit, dispatch }, { email, song, creatorEmail }) {
+      let obj = {
+        receiver: email.value,
+        song: song,
+        sender: creatorEmail
+      }
+      let res = await api.post("recommends", obj)
+    },
+
+    async getRecommends({ commit, dispatch }) {
+      let res = await api.get("recommends")
+      commit("setRecommends", res.data)
+    },
+    async deleteRec({ commit, dispatch }, id) {
+      let res = await api.delete("recommends/" + id)
+      dispatch("getRecommends")
     }
 
 
