@@ -87,7 +87,7 @@ export default {
         "We won't tell them that you don't care for this song!",
         "info"
       );
-      debugger;
+      //debugger;
       this.$store.dispatch("deleteRec", this.songData.id);
     }
   },
