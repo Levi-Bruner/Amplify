@@ -32,7 +32,6 @@
 
 
 <script>
-import NotificationService from "../../../server/services/NotificationService.js";
 export default {
   name: "song",
   props: ["songData"],
@@ -61,7 +60,7 @@ export default {
         albumArtLarge: this.songData.albumArtLarge
       };
       this.$store.dispatch("addToFavorites", this.newFavorite);
-      NotificationService.toast;
+      this.$swal("Success!", "This song is now in your favorites", "success");
     }
   },
   components: {}
