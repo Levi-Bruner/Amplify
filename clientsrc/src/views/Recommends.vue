@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row text-center">
       <div class="col-12 p-3">
         <h5>Here is a list of songs your friends think you might like!</h5>
       </div>
