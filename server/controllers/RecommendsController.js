@@ -21,7 +21,7 @@ export class RecommendsController extends BaseController {
       //.post('/', this.getByRecevierEmail)
       .post('', this.create)
       .delete('/:id', this.delete)
-      .put("/:creatorEmail")
+
   }
 
 
@@ -47,7 +47,9 @@ export class RecommendsController extends BaseController {
     try {
       let data = await recommendsService.getByRecevierEmail(req.userInfo.email)
       return res.send(data)
-    } catch (error) { next(error) }
+    } catch (error) {
+      next(error)
+    }
   }
 
 
