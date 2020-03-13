@@ -15,7 +15,9 @@ class FavoritesService {
 
   async getById(id, userEmail) {
     let data = await dbContext.Favorites.findOne({
-      _id: id,
+      Song: {
+        title: id
+      },
       creatorEmail: userEmail
     }).populate("creator", "name picture")
     if (!data) {
