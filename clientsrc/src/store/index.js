@@ -1,14 +1,16 @@
 import Vue from "vue";
-import Vuex, { Store } from "vuex";
+import Vuex, {
+  Store
+} from "vuex";
 import Axios from "axios";
 import router from "../router";
 import Song from "../models/song";
 
 Vue.use(Vuex);
 
-let baseUrl = location.host.includes("localhost")
-  ? "http://localhost:3000/"
-  : "/";
+let baseUrl = location.host.includes("localhost") ?
+  "http://localhost:3000/" :
+  "/";
 
 let api = Axios.create({
   baseURL: baseUrl + "api",
@@ -41,13 +43,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setBearer({ }, bearer) {
+    setBearer({}, bearer) {
       api.defaults.headers.authorization = bearer;
     },
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
-    async getProfile({ commit }) {
+    async getProfile({
+      commit
+    }) {
       try {
         let res = await api.get("profile");
         commit("setProfile", res.data);
@@ -55,7 +59,35 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async getMusicByQuery({ commit, dispatch }, query) {
+    async getMusicByQueryFav({
+      commit,
+      dispatch
+    }, query) {
+      try {
+        let res = await api.get("favorites/" + query)
+        commit("setSearchedSongs", res.data);
+      } catch (error) {
+
+      }
+
+    },
+    async getMusicByQueryRec({
+      commit,
+      dispatch
+    }, query) {
+      try {
+        debugger
+        let res = await api.get("recommends/" + query)
+        commit("setSearchedSongs", res.data);
+      } catch (error) {
+
+      }
+
+    },
+    async getMusicByQuery({
+      commit,
+      dispatch
+    }, query) {
       try {
         let url = "https://itunes.apple.com/search?callback=?&term=" + query;
         // @ts-ignore
@@ -66,29 +98,45 @@ export default new Vuex.Store({
 
             commit("setSearchedSongs", results);
           }).
-          catch(e => {
-            console.log(e)
-          })
-      }
-      catch {
+        catch(e => {
+          console.log(e)
+        })
+      } catch {
         (err => {
           throw new Error(err);
         })
       }
     },
-    async addToFavorites({ commit, dispatch }, newFavorite) {
-      let res = await api.post("favorites", { Song: newFavorite })
+    async addToFavorites({
+      commit,
+      dispatch
+    }, newFavorite) {
+      let res = await api.post("favorites", {
+        Song: newFavorite
+      })
       commit("addFavorite", res.data)
     },
-    async getFavoritesByEmail({ commit, dispatch }) {
+    async getFavoritesByEmail({
+      commit,
+      dispatch
+    }) {
       let res = await api.get("favorites")
       commit("setFavorites", res.data)
     },
-    async deleteFavorite({ commit, dispatch }, id) {
+    async deleteFavorite({
+      commit,
+      dispatch
+    }, id) {
       let res = await api.delete("favorites/" + id)
       dispatch("getFavoritesByEmail")
     },
-    async recommendTo({ commit, dispatch }, { email, song }) {
+    async recommendTo({
+      commit,
+      dispatch
+    }, {
+      email,
+      song
+    }) {
       //debugger
       let obj = {
         receiver: email.value,
@@ -98,7 +146,14 @@ export default new Vuex.Store({
       let res = await api.post("recommends", obj)
     },
 
-    async recommendToFromSearch({ commit, dispatch }, { email, song, creatorEmail }) {
+    async recommendToFromSearch({
+      commit,
+      dispatch
+    }, {
+      email,
+      song,
+      creatorEmail
+    }) {
       let obj = {
         receiver: email.value,
         song: song,
@@ -107,11 +162,17 @@ export default new Vuex.Store({
       let res = await api.post("recommends", obj)
     },
 
-    async getRecommends({ commit, dispatch }) {
+    async getRecommends({
+      commit,
+      dispatch
+    }) {
       let res = await api.get("recommends")
       commit("setRecommends", res.data)
     },
-    async deleteRec({ commit, dispatch }, id) {
+    async deleteRec({
+      commit,
+      dispatch
+    }, id) {
       let res = await api.delete("recommends/" + id)
       dispatch("getRecommends")
     }

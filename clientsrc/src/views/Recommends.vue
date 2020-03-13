@@ -1,10 +1,24 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row text-center">
       <div class="col-12 p-3">
         <h5>Here is a list of songs your friends think you might like!</h5>
       </div>
     </div>
+    <div id="search" class="row text-center text-light">
+      <div class="col-12 justify-content-center">
+        <p>search here...</p>
+        <form class="row justify-content-center" @submit.prevent="searchRecommends">
+          <input class type="text" placeholder="search for tracks" v-model="query" />
+          <button class="btn btn-secondary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="search-results" class="row justify-content-center">
+      <song v-for="song in searchedSongs" :key="song.id" :songData="song" />
+    </div>
+
     <div class="row justify-content-center">
       <song v-for="song in recommendedSongs" :key="song.id" :songData="song" />
     </div>
@@ -20,14 +34,23 @@ export default {
     return this.$store.dispatch("getRecommends");
   },
   data() {
-    return {};
+    return {
+      query: ""
+    };
   },
   computed: {
     recommendedSongs() {
       return this.$store.state.recommendedSongs;
+    },
+    searchedSongs() {
+      return this.$store.state.searchedSongs;
     }
   },
-  methods: {},
+  methods: {
+    searchRecommends() {
+      this.$store.dispatch("getMusicByQueryRec", this.query);
+    }
+  },
   components: {
     song
   }
