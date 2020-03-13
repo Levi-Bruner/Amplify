@@ -14,7 +14,7 @@ class FavoritesService {
   }
 
   async getById(id, userEmail) {
-    let data = await dbContext.Favorites.findOne({
+    let data = await dbContext.Favorites.find({
       Song: {
         title: id
       },

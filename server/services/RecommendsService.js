@@ -25,7 +25,7 @@ class RecommendsService {
 
   async getById(id, userEmail) {
     let data = await dbContext.Recommends.findOne({
-      Song: {
+      song: {
         title: id
       },
       creatorEmail: userEmail
