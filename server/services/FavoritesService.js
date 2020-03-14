@@ -13,13 +13,13 @@ class FavoritesService {
     }).populate("creator", "name picture")
   }
 
-  async getById(id, userEmail) {
+  async getByTitle(title, userEmail) {
     // let data = await dbContext.Favorites.find({
     //   Song: {
     //     title: id
     //   },
     let data = await dbContext.Favorites.find({
-      "Song.title": id,
+      "Song.title": title,
       creatorEmail: userEmail
 
 

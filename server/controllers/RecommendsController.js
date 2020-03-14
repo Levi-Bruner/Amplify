@@ -17,7 +17,7 @@ export class RecommendsController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       // .get('/sent', this.getAllSent)
-      .get('/:id', this.getById)
+      .get('/:title', this.getByTitle)
       //.post('/', this.getByRecevierEmail)
       .post('', this.create)
       .delete('/:id', this.delete)
@@ -34,9 +34,9 @@ export class RecommendsController extends BaseController {
     }
   }
 
-  async getById(req, res, next) {
+  async getByTitle(req, res, next) {
     try {
-      let data = await recommendsService.getById(req.params.id, req.userInfo.email)
+      let data = await recommendsService.getByTitle(req.params.title, req.userInfo.email)
       return res.send(data)
     } catch (error) {
       next(error)

@@ -33,7 +33,7 @@ export class FavoritesController extends BaseController {
 
   async getByTitle(req, res, next) {
     try {
-      let data = await favoritesService.getById(req.params.title, req.userInfo.email)
+      let data = await favoritesService.getByTitle(req.params.title, req.userInfo.email)
       return res.send(data)
     } catch (error) {
       next(error)
