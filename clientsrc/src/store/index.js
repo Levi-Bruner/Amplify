@@ -76,7 +76,7 @@ export default new Vuex.Store({
       dispatch
     }, query) {
       try {
-        debugger
+
         let res = await api.get("recommends/" + query)
         commit("setSearchedSongs", res.data);
       } catch (error) {
@@ -137,7 +137,6 @@ export default new Vuex.Store({
       email,
       song
     }) {
-      //debugger
       let obj = {
         receiver: email.value,
         song: song.Song,

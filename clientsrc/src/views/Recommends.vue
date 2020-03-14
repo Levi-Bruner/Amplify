@@ -7,8 +7,7 @@
     </div>
     <div id="search" class="row text-center text-light">
       <div class="col-12 justify-content-center">
-        <p>search here...</p>
-        <form class="row justify-content-center" @submit.prevent="searchRecommends">
+        <form class="row justify-content-center p-3" @submit.prevent="searchRecommends">
           <input class type="text" placeholder="search for tracks" v-model="query" />
           <button class="btn btn-secondary" type="submit">Search</button>
         </form>
@@ -27,6 +26,7 @@
 
 
 <script>
+import songsf from "../components/favSong";
 import song from "../components/recSong";
 export default {
   name: "Recommends",
@@ -52,7 +52,8 @@ export default {
     }
   },
   components: {
-    song
+    song,
+    songsf
   }
 };
 </script>

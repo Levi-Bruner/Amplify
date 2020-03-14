@@ -24,7 +24,7 @@ class RecommendsService {
   }
 
   async getById(id, userEmail) {
-    let data = await dbContext.Recommends.findOne({
+    let data = await dbContext.Recommends.find({
       "song.title": id,
       creatorEmail: userEmail
     }).populate("creator", "name picture")
