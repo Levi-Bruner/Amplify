@@ -25,7 +25,7 @@ export class ProfilesController extends BaseController {
   }
   async editPositive(req, res, next) {
     try {
-      let data = req.body.positiveRecommends
+      let data = req.body.positiveRecommend
       let postive = await profilesService.edit(req.userInfo.email, data)
       res.send(postive)
     } catch (error) { next(error) }
