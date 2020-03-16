@@ -8,7 +8,7 @@ export class ProfilesController extends BaseController {
     super("api/profile");
     this.router
       .use(auth0Provider.getAuthorizedUserInfo)
-      .put("/positive", this.editPositve)
+      .put("/positive", this.editPositive)
       .put("/total", this.editTotal)
       .put("/username", this.editUsername)
       .get("", this.getUserProfile)
@@ -23,7 +23,7 @@ export class ProfilesController extends BaseController {
       next(error);
     }
   }
-  async editPositve(req, res, next) {
+  async editPositive(req, res, next) {
     try {
       let data = req.body.positiveRecommend
       let postive = await profilesService.edit(req.userInfo.email, data)
