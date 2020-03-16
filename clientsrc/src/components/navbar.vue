@@ -3,7 +3,7 @@
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
       <img src="../assets/amplify2.png" class="img-fluid our-logo" alt />
       <!-- ../assets/pop.png -->
-      <span style="color:purple">mplify</span>
+      <span style="color:purple">Amplify</span>
     </router-link>
     <button
       class="navbar-toggler"

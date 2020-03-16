@@ -1,8 +1,8 @@
 <template>
   <div class="home text-center">
-    <h6
+    <h4
       style="color:purple; padding-top: 2em"
-    >Have you ever heard a song and thought "My friend is going to love this I should send it to them"</h6>
+    >Have you ever heard a song and thought "My friend is going to love this I should send it to them"</h4>
 
     <h1 style="padding-top: 4em">Welcome to Amplify</h1>
     <h3 style="color:purple; padding-top: 1em ">A place where music is shared freely</h3>
@@ -38,7 +38,7 @@
       </a>
     </div>
     <div class="container-fluid">
-      <div class="row" style="padding-top: 10em">
+      <div class="row" style="padding-top: 10em;">
         <div class="col-sm-6">
           <h1>About Us</h1>
           <br />
@@ -51,20 +51,26 @@
         </div>
       </div>
 
-      <div class="row" style="padding-top: 8em">
+      <div class="row c" style="padding-top: 8em; padding-bottem: 6em">
         <div class="col-sm-6">
-             <img class="img-responsive" src="../assets/amplify7.png" alt />
+          <img
+            class="display: block; max-width: 100%; height:auto;"
+            src="../assets/amplify7.png"
+            alt
+          />
         </div>
-        <div class="col-sm-6"> <h1>Helping Artists</h1>
+        <div class="col-sm-6">
+          <h1>Helping Artists</h1>
           <br />
           <h4
             style="color:purple;"
           >Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsum, incidunt consequatur quam perspiciatis, soluta tempore eaque eligendi ex ipsa laborum ad et ullam in praesentium voluptates? Vero, a dolor.</h4>
         </div>
-        </div>
-        <footer><img src="../assets/amplify.png" style=""></footer>
       </div>
     </div>
+    <footer class="gradient" style="margin-top: 6em">
+      <h3 style="color:purple;">Amplify</h3>
+    </footer>
   </div>
 </template>
 
@@ -77,5 +83,18 @@ export default {
 <style>
 h1 {
   color: white;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* .footer {
+  background-color: darkmagenta;
+  text-align: center;
+  padding: 10px;
+} */
+.gradient {
+  background-image: linear-gradient(purple, magenta);
 }
 </style>
