@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
-      <img src="../assets/amplify.png" class="img-fluid our-logo" alt />
+      <img src="../assets/amplify2.png" class="img-fluid our-logo" alt />
       <!-- ../assets/pop.png -->
-      mplify
+      <span style="color:purple">Amplify</span>
     </router-link>
     <button
       class="navbar-toggler"
@@ -19,14 +19,14 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'Home' }">
-          <router-link :to="{ name: 'Home' }" class="nav-link">Home</router-link>
+          <router-link :to="{ name: 'Home' }" class="nav-link" style="color:purple">Home</router-link>
         </li>
         <li
           class="nav-item"
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Profile' }"
         >
-          <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
+          <router-link class="nav-link" style="color:purple" :to="{ name: 'Profile' }">Profile</router-link>
         </li>
 
         <!-- NOTE DO THIS ON THE BACK END -->
@@ -35,7 +35,11 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Favorites' }"
         >
-          <router-link class="nav-link" :to="{ name: 'Favorites' }">My Favorites</router-link>
+          <router-link
+            class="nav-link"
+            :to="{ name: 'Favorites' }"
+            style="color:purple"
+          >My Favorites</router-link>
         </li>
         <!-- and this -->
         <li
@@ -43,7 +47,11 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'Recommends' }"
         >
-          <router-link class="nav-link" :to="{ name: 'Recommends' }">See what your friends recommend</router-link>
+          <router-link
+            class="nav-link"
+            :to="{ name: 'Recommends' }"
+            style="color:purple"
+          >See what your friends recommend</router-link>
         </li>
         <!-- end chore here -->
       </ul>
