@@ -2,6 +2,7 @@
   <div class="container-fluid about text-light">
     <div class="row justify-content-between pt-2">
       <div class="col-3">
+       
         <i class="icon-large far fa-bell fa-3x"></i>
       </div>
     </div>
@@ -15,7 +16,7 @@
 }" :src="profile.picture" alt />
       <p>{{ profile.email }}</p>
       <div class="col-3">
-        <p>Score#</p>
+        <p>Score {{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</p>
       </div>
     </div>
 
@@ -52,6 +53,9 @@
 import song from "../components/song";
 export default {
   name: "Profile",
+  mounted() {
+    return this.$store.dispatch("getScoreVariables");
+  },
   data() {
     return {
       query: ""
@@ -61,6 +65,7 @@ export default {
     profile() {
       return this.$store.state.profile;
     },
+
     searchedSongs() {
       return this.$store.state.searchedSongs;
     }

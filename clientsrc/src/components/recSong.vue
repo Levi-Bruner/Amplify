@@ -27,7 +27,7 @@
         </audio>
       </div>
 
-      <button class="btn btn-info btn-outline-success text-light col-6">Like</button>
+      <button class="btn btn-info btn-outline-success text-light col-6" @click="like">Like</button>
       <button class="btn btn-warning btn-outline-danger text-light col-6" @click="mehThis">Meh</button>
       <!-- end row -->
     </div>
@@ -49,7 +49,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    profile() {
+      return this.$store.state.profile;
+    }
+  },
   methods: {
     removeFromFavorites() {
       this.$store.dispatch("deleteFavorite", this.songData.id);
@@ -69,15 +73,43 @@ export default {
       this.$store.dispatch("addToFavorites", this.newFavorite);
       this.$swal("Success!", "This song is now in your favorites", "success");
     },
+    like() {
+      this.$swal(
+        "Liked and Saved!",
+        "Your friend is happy to hear you like their recommendation, it has been saved in your favorites!",
+        "success"
+      );
+      this.newFavorite = {
+        artist: this.songData.song.artist,
+        album: this.songData.song.album,
+        title: this.songData.song.title,
+        preview: this.songData.song.preview,
+        price: this.songData.song.price,
+        songId: this.songData.song.id,
+        albumArt: this.songData.song.albumArt,
+        albumArtSmall: this.songData.song.albumArtSmall,
+        albumArtLarge: this.songData.song.albumArtLarge
+      };
+      let newFavorite = this.newFavorite;
+      let id = this.songData.id;
+      this.$store.dispatch("like", { newFavorite, id });
+    },
+
     recommendTo() {
-      let song = this.songData;
+      //debugger;
+      let song = this.songData.song;
+      let creatorEmail = this.profile.email;
       this.$swal({
         title: "Recommend this song to...",
         input: "email",
         inputPlaceholder: "Enter your friend's email",
         showCloseButton: true
       }).then(email => {
-        this.$store.dispatch("recommendTo", { email, song });
+        this.$store.dispatch("recommendToFromSearch", {
+          email,
+          song,
+          creatorEmail
+        });
       });
     },
 
