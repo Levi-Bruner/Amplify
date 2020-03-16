@@ -47,11 +47,12 @@ class RecommendsService {
       creatorEmail: userEmail
     });
     if (!data) {
+
       throw new BadRequest("Invalid ID");
     }
   }
-
 }
+
 
 
 export const recommendsService = new RecommendsService()
