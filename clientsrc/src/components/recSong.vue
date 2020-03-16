@@ -21,7 +21,7 @@
         <p>{{songData.song.album}}</p>
       </div>
 
-      <div class="col-12">
+      <div class="col-12 text-center">
         <audio controls>
           <source :src="songData.song.preview" type="audio/ogg" />
         </audio>

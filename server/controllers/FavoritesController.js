@@ -16,7 +16,7 @@ export class FavoritesController extends BaseController {
     this.router
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
-      .get('/:id', this.getById)
+      .get('/:title', this.getByTitle)
       .post('', this.create)
       .delete('/:id', this.delete)
   }
@@ -31,9 +31,9 @@ export class FavoritesController extends BaseController {
     }
   }
 
-  async getById(req, res, next) {
+  async getByTitle(req, res, next) {
     try {
-      let data = await favoritesService.getById(req.params.id, req.userInfo.email)
+      let data = await favoritesService.getByTitle(req.params.title, req.userInfo.email)
       return res.send(data)
     } catch (error) {
       next(error)

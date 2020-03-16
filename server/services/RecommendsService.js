@@ -9,7 +9,9 @@ import {
 class RecommendsService {
   async getByRecevierEmail(userEmail) {
 
-    let recommends = await dbContext.Recommends.find({ recevier: userEmail })
+    let recommends = await dbContext.Recommends.find({
+      recevier: userEmail
+    })
     if (!recommends) {
       throw new BadRequest("Invalid email")
     }
@@ -21,9 +23,9 @@ class RecommendsService {
     }).populate("creator", "name picture")
   }
 
-  async getById(id, userEmail) {
-    let data = await dbContext.Recommends.findOne({
-      _id: id,
+  async getByTitle(title, userEmail) {
+    let data = await dbContext.Recommends.find({
+      "song.title": title,
       creatorEmail: userEmail
     }).populate("creator", "name picture")
     if (!data) {

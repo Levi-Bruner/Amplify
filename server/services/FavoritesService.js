@@ -13,10 +13,16 @@ class FavoritesService {
     }).populate("creator", "name picture")
   }
 
-  async getById(id, userEmail) {
-    let data = await dbContext.Favorites.findOne({
-      _id: id,
+  async getByTitle(title, userEmail) {
+    // let data = await dbContext.Favorites.find({
+    //   Song: {
+    //     title: id
+    //   },
+    let data = await dbContext.Favorites.find({
+      "Song.title": title,
       creatorEmail: userEmail
+
+
     }).populate("creator", "name picture")
     if (!data) {
       throw new BadRequest("Invalid ID")
