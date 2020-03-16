@@ -27,7 +27,7 @@
         </audio>
       </div>
 
-      <button class="btn btn-info btn-outline-success text-light col-6">Like</button>
+      <button class="btn btn-info btn-outline-success text-light col-6" @click="like">Like</button>
       <button class="btn btn-warning btn-outline-danger text-light col-6" @click="mehThis">Meh</button>
       <!-- end row -->
     </div>
@@ -68,6 +68,20 @@ export default {
       };
       this.$store.dispatch("addToFavorites", this.newFavorite);
       this.$swal("Success!", "This song is now in your favorites", "success");
+    },
+    like() {
+      this.newFavorite = {
+        artist: this.songData.song.artist,
+        album: this.songData.song.album,
+        title: this.songData.song.title,
+        preview: this.songData.song.preview,
+        price: this.songData.song.price,
+        songId: this.songData.song.id,
+        albumArt: this.songData.song.albumArt,
+        albumArtSmall: this.songData.song.albumArtSmall,
+        albumArtLarge: this.songData.song.albumArtLarge
+      };
+      this.$store.dispatch("like", this.newFavorite);
     },
     recommendTo() {
       let song = this.songData;
