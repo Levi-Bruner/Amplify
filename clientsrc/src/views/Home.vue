@@ -64,7 +64,7 @@
           <br />
           <h4
             style="color:purple;"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsum, incidunt consequatur quam perspiciatis, soluta tempore eaque eligendi ex ipsa laborum ad et ullam in praesentium voluptates? Vero, a dolor.</h4>
+          >How does Amplify help artists? We help artists by giving them a network to discover new genres as well as find what people in our community are listening to. We give artists a chance to grow and find the next new style.</h4>
         </div>
       </div>
     </div>
