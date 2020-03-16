@@ -135,6 +135,7 @@ export default new Vuex.Store({
 
 
     async recommendTo({ commit, dispatch }, { email, song }) {
+      //  debugger
       let obj = {
         receiver: email.value,
         song: song.Song,
@@ -145,6 +146,7 @@ export default new Vuex.Store({
     },
 
     async recommendToFromSearch({ commit, dispatch }, { email, song, creatorEmail }) {
+      //also used when recommending from recommends
       let obj = {
         receiver: email.value,
         song: song,
@@ -152,6 +154,7 @@ export default new Vuex.Store({
       }
       let res = await api.post("recommends", obj)
       dispatch("getTotalForPut")
+      dispatch("getRecommends")
     },
 
 

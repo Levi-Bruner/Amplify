@@ -49,7 +49,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    profile() {
+      return this.$store.state.profile;
+    }
+  },
   methods: {
     removeFromFavorites() {
       this.$store.dispatch("deleteFavorite", this.songData.id);
@@ -71,8 +75,8 @@ export default {
     },
     like() {
       this.$swal(
-        "Saved in Favorites!",
-        "Awesome, the song is saved in your favorites, and we will let them know you liked their recommendation!",
+        "Liked and Saved!",
+        "Your friend is happy to hear you like their recommendation, it has been saved in your favorites!",
         "success"
       );
       this.newFavorite = {
@@ -90,15 +94,22 @@ export default {
       let id = this.songData.id;
       this.$store.dispatch("like", { newFavorite, id });
     },
+
     recommendTo() {
-      let song = this.songData;
+      //debugger;
+      let song = this.songData.song;
+      let creatorEmail = this.profile.email;
       this.$swal({
         title: "Recommend this song to...",
         input: "email",
         inputPlaceholder: "Enter your friend's email",
         showCloseButton: true
       }).then(email => {
-        this.$store.dispatch("recommendTo", { email, song });
+        this.$store.dispatch("recommendToFromSearch", {
+          email,
+          song,
+          creatorEmail
+        });
       });
     },
 
