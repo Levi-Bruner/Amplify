@@ -70,6 +70,11 @@ export default {
       this.$swal("Success!", "This song is now in your favorites", "success");
     },
     like() {
+      this.$swal(
+        "Saved in Favorites!",
+        "Awesome, the song is saved in your favorites, and we will let them know you liked their recommendation!",
+        "success"
+      );
       this.newFavorite = {
         artist: this.songData.song.artist,
         album: this.songData.song.album,
@@ -81,7 +86,9 @@ export default {
         albumArtSmall: this.songData.song.albumArtSmall,
         albumArtLarge: this.songData.song.albumArtLarge
       };
-      this.$store.dispatch("like", this.newFavorite);
+      let newFavorite = this.newFavorite;
+      let id = this.songData.id;
+      this.$store.dispatch("like", { newFavorite, id });
     },
     recommendTo() {
       let song = this.songData;

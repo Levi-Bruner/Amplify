@@ -177,19 +177,21 @@ export default new Vuex.Store({
     async scoreTotalRec({ commit, dispatch }, totalRec) {
       try {
         //2
-        debugger
+        // debugger
         let objProp = { totalRecommends: (totalRec + 1) }
         let res = await api.put("profile/total", objProp)
-        console.log(res.data)
+        // console.log(res.data)
         commit("setProfile", res.data)
       } catch (error) {
 
       }
     },
 
-    like({ commit, dispatch }, newFavorite) {
+    like({ commit, dispatch }, { newFavorite, id }) {
+      //debugger
       dispatch("addToFavorites", newFavorite)
       dispatch("getPositivesForPut")
+      dispatch("deleteRec", id)
     },
 
     async getPositivesForPut({ commit, dispatch }) {
@@ -201,10 +203,10 @@ export default new Vuex.Store({
     async scoreGoodRec({ commit, dispatch }, posRec) {
       try {
         //2
-        debugger
+        //debugger
         let objProp = { positiveRecommend: (posRec + 1) }
         let res = await api.put("profile/positive", objProp)
-        console.log(res.data)
+        // console.log(res.data)
         commit("setProfile", res.data)
       } catch (error) {
 
@@ -213,7 +215,7 @@ export default new Vuex.Store({
 
     async getScoreVariables({ commit, dispatch }) {
       let resT = await api.get("profile")
-      console.log(resT.data)
+      // console.log(resT.data)
       //dispatch("scoreTotalRec", resT.data.totalRecommends)
 
 
