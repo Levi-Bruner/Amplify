@@ -14,8 +14,12 @@
       <img class="rounded text-center" style="display: inline-flex;
 }" :src="profile.picture" alt />
       <p>{{ profile.email }}</p>
-      <div class="col-3">
-        <p>Score {{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</p>
+      <div class="row justify-content-between">
+        <div class="col-3">Total Recommendations Made: {{profile.totalRecommends}}</div>
+        <div class="col-3">Total Positive Recommendations: {{profile.positiveRecommend}}</div>
+        <div
+          class="col-3"
+        >Aggregate Score: {{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</div>
       </div>
     </div>
 

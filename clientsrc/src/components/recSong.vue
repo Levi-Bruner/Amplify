@@ -26,9 +26,16 @@
           <source :src="songData.song.preview" type="audio/ogg" />
         </audio>
       </div>
-
-      <button class="btn btn-info btn-outline-success text-light col-6" @click="like">Like</button>
-      <button class="btn btn-warning btn-outline-danger text-light col-6" @click="mehThis">Meh</button>
+      <div class="col-12 buttons">
+        <button
+          class="btn btn-info btn-outline-success text-light col-6 col-md-4"
+          @click="like"
+        >Like</button>
+        <button
+          class="btn btn-warning btn-outline-danger text-light col-6 col-md-4"
+          @click="mehThis"
+        >Meh</button>
+      </div>
       <!-- end row -->
     </div>
     <!-- end row -->
@@ -132,5 +139,10 @@ export default {
 <style scoped>
 .bg-pers {
   background-color: rgba(162, 51, 218, 0.35);
+}
+@media only screen and (min-width: 768px) {
+  .buttons {
+    padding-left: 22vw;
+  }
 }
 </style>
