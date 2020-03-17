@@ -183,7 +183,7 @@ export default new Vuex.Store({
         // debugger
         let objProp = { totalRecommends: (totalRec + 1) }
         let res = await api.put("profile/total", objProp)
-        // console.log(res.data)
+        //NOTE Dieter sockets
         commit("setProfile", res.data)
       } catch (error) {
 
@@ -209,7 +209,7 @@ export default new Vuex.Store({
         //debugger
         let objProp = { positiveRecommend: (posRec + 1) }
         let res = await api.put("profile/positive", objProp)
-        // console.log(res.data)
+        //NOTE Dieter sockets
         commit("setProfile", res.data)
       } catch (error) {
 

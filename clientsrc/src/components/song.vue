@@ -90,7 +90,7 @@ export default {
 }
 @media only screen and (min-width: 768px) {
   .audio {
-    padding-left: 27vw;
+    padding-left: 30vw;
   }
 }
 </style>
