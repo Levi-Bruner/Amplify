@@ -2,7 +2,6 @@
   <div class="container-fluid about text-light">
     <div class="row justify-content-between pt-2">
       <div class="col-3">
-       
         <i class="icon-large far fa-bell fa-3x"></i>
       </div>
     </div>
@@ -29,13 +28,15 @@
               class
               type="text"
               style="height: 4em;
-    width: -webkit-fill-available;"
+              width: -webkit-fill-available;
+              max-width: 20rem"
               placeholder="Search For Tracks..."
               v-model="query"
             />
             <button
               class="btn btn-outline-success"
               style="width: -webkit-fill-available;
+              max-width: 20rem
 }"
               type="submit"
             >Search</button>
