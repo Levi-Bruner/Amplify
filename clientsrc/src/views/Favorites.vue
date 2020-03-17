@@ -5,8 +5,8 @@
         <h1>My Favorites</h1>
 
         <form class="row justify-content-center" @submit.prevent="searchFavorites">
-          <input class type="text" placeholder="search for tracks" v-model="query" />
-          <button class="btn btn-secondary" type="submit">Search</button>
+          <input class="input" type="text" placeholder="search for tracks" v-model="query" />
+          <button class="search btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -60,5 +60,14 @@ export default {
 <style>
 h5 {
   color: white;
+}
+.input {
+  height: 4em;
+  width: 100%;
+  max-width: 20rem;
+}
+.search {
+  width: 100%;
+  max-width: 20rem;
 }
 </style>

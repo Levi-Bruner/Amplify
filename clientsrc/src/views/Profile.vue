@@ -24,22 +24,8 @@
 }">
         <div class="col-12 justify-content-center">
           <form class="row justify-content-center" @submit.prevent="searchiTunes">
-            <input
-              class
-              type="text"
-              style="height: 4em;
-              width: -webkit-fill-available;
-              max-width: 20rem"
-              placeholder="Search For Tracks..."
-              v-model="query"
-            />
-            <button
-              class="btn btn-outline-success"
-              style="width: -webkit-fill-available;
-              max-width: 20rem
-}"
-              type="submit"
-            >Search</button>
+            <input class="input" type="text" placeholder="Search For Tracks..." v-model="query" />
+            <button class="search btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </div>
@@ -88,5 +74,14 @@ img {
 }
 .my-img {
   max-width: 70%;
+}
+.input {
+  height: 4em;
+  width: 100%;
+  max-width: 20rem;
+}
+.search {
+  width: 100%;
+  max-width: 20rem;
 }
 </style>
