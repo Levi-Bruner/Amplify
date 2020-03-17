@@ -20,7 +20,7 @@ export class RecommendsController extends BaseController {
       .get('/:title', this.getByTitle)
       //.post('/', this.getByRecevierEmail)
       .post('', this.create)
-      .delete('/:id', this.delete)
+      .delete('/:id ', this.delete)
 
   }
 

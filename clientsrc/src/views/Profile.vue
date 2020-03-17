@@ -4,6 +4,16 @@
       <div class="col-3">
         <i class="icon-large far fa-bell fa-3x"></i>
       </div>
+    <div v-if="profile.username == newUser:></div>
+      <div class="card border-danger mb-3" style="max-width: 20rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h4 class="card-title">Danger card title</h4>
+          <p
+            class="card-text"
+          >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
     </div>
     <div class="col-12 text-center" style="padding-top: 4em;">
       <h3 class="text-light">
