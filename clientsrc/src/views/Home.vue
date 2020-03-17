@@ -42,9 +42,12 @@
         <div class="col-sm-6">
           <h1>About Us</h1>
           <br />
-          <h4
-            style="color:purple;"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsum, incidunt consequatur quam perspiciatis, soluta tempore eaque eligendi ex ipsa laborum ad et ullam in praesentium voluptates? Vero, a dolor.</h4>
+          <h4 style="color:purple;">
+            <p>We believe that your friends know you better than an algorithm</p>
+            <p>We believe in opportunity to discover new genres</p>
+            <p>We believe in community through music</p>We created Amplify to help you expand your musical horizons and promote your favorite artists. Music is better with friends. Let us help you share!
+            Amplify your world
+          </h4>
         </div>
         <div class="col-sm-6">
           <img src="../assets/amplify6.png" alt />
@@ -64,7 +67,7 @@
           <br />
           <h4
             style="color:purple;"
-          >How does Amplify help artists? We help artists by giving them a network to discover new genres as well as find what people in our community are listening to. We give artists a chance to grow and find the next new style.</h4>
+          >We help artists by giving them a network to discover new genres, and find what people in our community are listening to. We give artists a chance to grow and find the next new style.</h4>
         </div>
       </div>
     </div>
