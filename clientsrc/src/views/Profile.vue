@@ -14,12 +14,30 @@
       <img class="rounded text-center" style="display: inline-flex;
 }" :src="profile.picture" alt />
       <p>{{ profile.email }}</p>
-      <div class="row justify-content-between">
-        <div class="col-3">Total Recommendations Made: {{profile.totalRecommends}}</div>
-        <div class="col-3">Total Positive Recommendations: {{profile.positiveRecommend}}</div>
-        <div
-          class="col-3"
-        >Aggregate Score: {{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</div>
+      <div class="row justify-content-center">
+        <div class="col-3">
+          Enjoyed:
+          <br />
+          <h2 class="score">{{profile.positiveRecommend}}</h2>
+        </div>
+        <div class="col-1">
+          <br />
+          <h2 class="score">/</h2>
+        </div>
+        <div class="col-3">
+          Sent:
+          <br />
+          <h2 class="score">{{profile.totalRecommends}}</h2>
+        </div>
+        <div class="col-1">
+          <br />
+          <h2 class="score">=</h2>
+        </div>
+        <div class="col-3">
+          Score:
+          <br />
+          <h2 class="score">{{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</h2>
+        </div>
       </div>
     </div>
 
@@ -87,5 +105,8 @@ img {
 .search {
   width: 100%;
   max-width: 20rem;
+}
+.score {
+  color: teal;
 }
 </style>
