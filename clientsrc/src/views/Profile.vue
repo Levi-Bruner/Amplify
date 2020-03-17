@@ -3,6 +3,21 @@
     <div class="row justify-content-between pt-2">
       <div class="col-3">
         <i class="icon-large far fa-bell fa-3x"></i>
+        <div v-if=" profile.username == 'newUser'">
+          <div class="card border-danger mb-3" style="max-width: 20rem;">
+            <div class="card-header">Please Create A User Name!</div>
+            <div class="card-body">
+              <form action="submit"></form>
+              <h4 class="card-title">Danger card title</h4>
+              <p
+                class="card-text"
+              >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div v-else:>
+            <h6>{{profile.username}}</h6>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-12 text-center" style="padding-top: 4em;">
