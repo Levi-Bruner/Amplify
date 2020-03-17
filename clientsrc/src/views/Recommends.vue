@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     recommendedSongs() {
-      return this.$store.state.recommendedSongs;
+      return this.$store.state.recommendedSongs.reverse();
     },
     searchedSongs() {
       return this.$store.state.searchedSongs;

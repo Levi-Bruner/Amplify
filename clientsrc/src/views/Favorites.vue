@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     favorites() {
-      return this.$store.state.favoriteSongs;
+      return this.$store.state.favoriteSongs.reverse();
     },
     profile() {
       return this.$store.state.profile;
