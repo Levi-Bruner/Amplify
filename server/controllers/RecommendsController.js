@@ -59,7 +59,7 @@ export class RecommendsController extends BaseController {
     try {
       req.body.creatorEmail = req.userInfo.email
       let data = await recommendsService.create(req.body);
-      socketService.messageRoom(data.receiver, "newRec", data);
+      socketService.messageRoom(data["receiver"], "newRec", data);
       return res.status(201).send(data)
     } catch (error) {
       next(error)

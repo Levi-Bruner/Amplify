@@ -12,7 +12,6 @@ export const favoriteStore ={
       }
 
     },
-
     async addToFavorites({ commit, dispatch }, newFavorite) {
       let res = await api.post("favorites", {
         Song: newFavorite
@@ -27,6 +26,5 @@ export const favoriteStore ={
       let res = await api.delete("favorites/" + id)
       dispatch("getFavoritesByEmail")
     },
-
   }
 }

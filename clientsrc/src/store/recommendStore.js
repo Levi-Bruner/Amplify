@@ -14,7 +14,6 @@ export const recommendStore ={
 
     },
     async recommendTo({ commit, dispatch }, { email, song }) {
-      //  debugger
       let obj = {
         receiver: email.value,
         song: song.Song,
@@ -49,7 +48,6 @@ export const recommendStore ={
     },
 
     like({ commit, dispatch }, { newFavorite, id }) {
-      //debugger
       dispatch("addToFavorites", newFavorite)
       dispatch("getPositivesForPut")
       dispatch("deleteRec", id)
