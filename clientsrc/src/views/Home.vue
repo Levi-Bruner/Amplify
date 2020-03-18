@@ -1,12 +1,12 @@
 <template>
   <div class="home text-center">
-    <h4 class="pretty" style="color:purple; padding-top: 2em">
+    <h4 class="pretty" style="padding-top: 2em">
       Have you ever heard a song and thought,
       <br />"My friend is going to love this..."
     </h4>
 
-    <h1 style="padding-top: 4em">Welcome to Amplify</h1>
-    <h3 class="pretty" style="color:purple; padding-top: 1em ">A place where music is shared freely</h3>
+    <h1 class="pretty" style="padding-top: 4em">Welcome to Amplify</h1>
+    <h3 class="pretty" style="padding-top: 1em ">A place where music is shared freely</h3>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner" style="padding-top:8em">
         <div class="carousel-item active">
@@ -41,9 +41,9 @@
     <div class="container-fluid">
       <div class="row" style="padding-top: 10em;">
         <div class="col-sm-6">
-          <h1>About Us</h1>
+          <h1 class="pretty">About Us</h1>
           <br />
-          <h4 class="pretty" style="color:purple;">
+          <h4 class="pretty">
             <p>We believe that your friends know you better than an algorithm</p>
             <p>We believe in opportunity to discover new genres</p>
             <p>We believe in community through music</p>
@@ -65,11 +65,10 @@
           />
         </div>
         <div class="col-sm-6">
-          <h1>Helping Artists</h1>
+          <h1 class="pretty">Helping Artists</h1>
           <br />
           <h4
             class="pretty"
-            style="color:purple;"
           >We help artists by giving them a network to discover new genres, and find what people in our community are listening to. We give artists a chance to grow and find the next new style.</h4>
         </div>
       </div>
@@ -96,8 +95,8 @@ img {
   height: auto;
 }
 .pretty {
-  color: purple;
-  text-shadow: black 4px 3px 4px;
+  color: white;
+  text-shadow: purple 4px 3px 4px;
   -webkit-text-stroke: 1px black;
   font-weight: 900;
 }
