@@ -30,7 +30,7 @@ export const socketStore = {
     },
 
     joinRoom({commit, dispatch}, roomName) {
-
+debugger
       socket.emit("dispatch", { action: "JoinRoom", data: roomName });
     }
   }

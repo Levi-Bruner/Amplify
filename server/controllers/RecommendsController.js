@@ -10,6 +10,7 @@ import socketService from "../services/SocketService";
 
 
 
+
 //PUBLIC
 export class RecommendsController extends BaseController {
   constructor() {
@@ -57,7 +58,7 @@ export class RecommendsController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorEmail = req.userInfo.email
-      let data = await recommendsService.create(req.body)
+      let data = await recommendsService.create(req.body);
       socketService.messageRoom(data.receiver, "newRec", data);
       return res.status(201).send(data)
     } catch (error) {

@@ -2,6 +2,8 @@ import express from "express";
 import BaseController from "../utils/BaseController";
 import auth0Provider from "@bcwdev/auth0provider";
 import { profilesService } from "../services/ProfilesService";
+import socketService from "../services/SocketService";
+
 
 export class ProfilesController extends BaseController {
   constructor() {
@@ -27,6 +29,9 @@ export class ProfilesController extends BaseController {
     try {
       let data = req.body.positiveRecommend
       let postive = await profilesService.edit(req.userInfo.email, data)
+      socketService.messageRoom(data.sender, "newPositiveScore", data)
+
+      
       res.send(postive)
     } catch (error) { next(error) }
   }
@@ -42,6 +47,7 @@ export class ProfilesController extends BaseController {
     try {
       let data = req.body.totalRecommends
       let total = await profilesService.editTotal(req.userInfo.email, data)
+      socketService.messageRoom(data.sender, "newTotalScore", data)
       res.send(total)
     } catch (error) { next(error) }
   }
