@@ -3,7 +3,7 @@
     <div class="row justify-content-between pt-2">
       <div class="col-3">
         <i class="icon-large far fa-bell fa-3x">
-          <span class="notify">{{recommendedSongs.length}}</span>
+          <span v-if="recommendedSongs.length > 0" class="notify">{{recommendedSongs.length}}</span>
         </i>
       </div>
     </div>
@@ -142,10 +142,10 @@ img {
   color: teal;
 }
 .notify {
-  color: red;
+  color: white;
   font-size: 1rem;
-  border: 1px solid white;
-  border-radius: 40%;
-  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.5);
+  padding: 3px;
 }
 </style>
