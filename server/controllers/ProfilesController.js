@@ -30,8 +30,6 @@ export class ProfilesController extends BaseController {
       let data = req.body.positiveRecommend
       let postive = await profilesService.edit(req.userInfo.email, data)
       socketService.messageRoom(data.sender, "newPositiveScore", data)
-
-      
       res.send(postive)
     } catch (error) { next(error) }
   }
