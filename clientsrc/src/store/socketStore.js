@@ -18,7 +18,8 @@ export const socketStore = {
 
       //register all listeners
       socket.on("newPositiveScore", data => {
-        commit("setProfile", data);
+        commit("addPositive", data);
+        // commit("setProfile", data);
       });
       //register all listeners
       socket.on("newTotalScore", data => {
@@ -29,8 +30,8 @@ export const socketStore = {
       });
     },
 
-    joinRoom({commit, dispatch}, roomName) {
-    socket.emit("dispatch", { action: "JoinRoom", data: roomName });
+    joinRoom({ commit, dispatch }, roomName) {
+      socket.emit("dispatch", { action: "JoinRoom", data: roomName });
     }
   }
 };
