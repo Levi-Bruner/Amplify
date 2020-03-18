@@ -5,6 +5,7 @@ import Vuex, {
 import Axios from "axios";
 import router from "../router";
 import Song from "../models/song";
+import {socketStore} from "./socketStore";
 
 Vue.use(Vuex);
 
@@ -229,5 +230,10 @@ export default new Vuex.Store({
 
 
 
+  },
+  modules: {
+    // favoritesStore,
+    // recommendsStore,
+    socketStore
   }
 });

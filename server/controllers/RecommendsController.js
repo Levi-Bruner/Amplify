@@ -4,6 +4,7 @@ import auth0provider from "@bcwdev/auth0provider";
 import {
   recommendsService
 } from '../services/RecommendsService'
+import socketService from "../services/SocketService";
 
 
 
@@ -20,7 +21,7 @@ export class RecommendsController extends BaseController {
       .get('/:title', this.getByTitle)
       //.post('/', this.getByRecevierEmail)
       .post('', this.create)
-      .delete('/:id ', this.delete)
+      .delete('/:id', this.delete)
 
   }
 
@@ -57,6 +58,7 @@ export class RecommendsController extends BaseController {
     try {
       req.body.creatorEmail = req.userInfo.email
       let data = await recommendsService.create(req.body)
+      socketService.messageRoom(data.receiver, "newRec", data);
       return res.status(201).send(data)
     } catch (error) {
       next(error)
