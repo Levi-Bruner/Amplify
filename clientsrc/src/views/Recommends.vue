@@ -5,14 +5,14 @@
         <h5>Here is a list of songs your friends think you might like!</h5>
       </div>
     </div>
-    <div id="search" class="row text-center text-light">
+    <!-- <div id="search" class="row text-center text-light">
       <div class="col-12 justify-content-center">
         <form class="row justify-content-center p-3" @submit.prevent="searchRecommends">
           <input class="input" type="text" placeholder="search for tracks" v-model="query" />
           <button class="search btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-    </div>
+    </div>-->
 
     <div id="search-results" class="row justify-content-center">
       <song v-for="song in searchedSongs" :key="song.id" :songData="song" />
