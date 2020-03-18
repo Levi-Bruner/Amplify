@@ -2,7 +2,9 @@
   <div class="container-fluid about text-light">
     <div class="row justify-content-between pt-2">
       <div class="col-3">
-        <i class="icon-large far fa-bell fa-3x"></i>
+        <i class="icon-large far fa-bell fa-3x">
+          <span class="notify">{{recommendedSongs.length}}</span>
+        </i>
       </div>
     </div>
     <div class="col-12 text-center" style="padding-top: 4em;">
@@ -63,6 +65,7 @@ import song from "../components/song";
 export default {
   name: "Profile",
   mounted() {
+    return this.$store.dispatch("getRecommends");
     return this.$store.dispatch("getScoreVariables");
   },
   data() {
@@ -74,7 +77,9 @@ export default {
     profile() {
       return this.$store.state.profile;
     },
-
+    recommendedSongs() {
+      return this.$store.state.recommendedSongs;
+    },
     searchedSongs() {
       return this.$store.state.searchedSongs;
     }
@@ -108,5 +113,12 @@ img {
 }
 .score {
   color: teal;
+}
+.notify {
+  color: red;
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 40%;
+  margin-bottom: 1rem;
 }
 </style>

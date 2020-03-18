@@ -4,10 +4,10 @@ import Vuex, {
 } from "vuex";
 import router from "../router";
 import Song from "../models/song";
-import {api} from "../services/AxiosService";
-import {socketStore} from "./socketStore";
-import {favoriteStore} from "./favoriteStore";
-import {recommendStore} from "./recommendStore";
+import { api } from "../services/AxiosService";
+import { socketStore } from "./socketStore";
+import { favoriteStore } from "./favoriteStore";
+import { recommendStore } from "./recommendStore";
 
 Vue.use(Vuex);
 
@@ -36,6 +36,12 @@ export default new Vuex.Store({
     setRecommends(state, recommends) {
       state.recommendedSongs = recommends
     },
+    addRecommends(state, recommends) {
+      state.recommendedSongs.push(recommends)
+    },
+    addPositive(state, score) {
+      state.profile.positiveRecommend = score
+    }
   },
   actions: {
     setBearer({ }, bearer) {
@@ -54,9 +60,9 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-   
-   
-    async getMusicByQuery({commit,dispatch}, query) {
+
+
+    async getMusicByQuery({ commit, dispatch }, query) {
       try {
         let url = "https://itunes.apple.com/search?callback=?&term=" + query;
         // @ts-ignore
@@ -76,7 +82,7 @@ export default new Vuex.Store({
         })
       }
     },
-   async getTotalForPut({ commit, dispatch }) {
+    async getTotalForPut({ commit, dispatch }) {
       //1
       let resT = await api.get("profile")
       dispatch("scoreTotalRec", resT.data.totalRecommends)
@@ -85,7 +91,6 @@ export default new Vuex.Store({
     async scoreTotalRec({ commit, dispatch }, totalRec) {
       try {
         //2
-        // debugger
         let objProp = { totalRecommends: (totalRec + 1) }
         let res = await api.put("profile/total", objProp)
         commit("setProfile", res.data)
@@ -98,11 +103,12 @@ export default new Vuex.Store({
       let resT = await api.get("profile")
       dispatch("scoreGoodRec", resT.data.positiveRecommend)
     },
-
+    updateScore({ commit, dispatch }, payload) {
+      console.log(payload)
+    },
     async scoreGoodRec({ commit, dispatch }, posRec) {
       try {
         //2
-        //debugger
         let objProp = { positiveRecommend: (posRec + 1) }
         let res = await api.put("profile/positive", objProp)
         commit("setProfile", res.data)
@@ -110,14 +116,14 @@ export default new Vuex.Store({
 
       }
     },
-      async getScoreVariables({ commit, dispatch }) {
+    async getScoreVariables({ commit, dispatch }) {
       let resT = await api.get("profile")
       // console.log(resT.data)
       //dispatch("scoreTotalRec", resT.data.totalRecommends)
 
 
     }
-   },
+  },
   modules: {
     favoriteStore,
     recommendStore,

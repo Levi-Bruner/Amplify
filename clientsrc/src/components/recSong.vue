@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  name: "song",
+  name: "rec-song",
   props: ["songData"],
   data() {
     return {};
@@ -99,11 +99,11 @@ export default {
       };
       let newFavorite = this.newFavorite;
       let id = this.songData.id;
-      this.$store.dispatch("like", { newFavorite, id });
+      let sender = this.songData.sender;
+      this.$store.dispatch("like", { newFavorite, id, sender });
     },
 
     recommendTo() {
-      //debugger;
       let song = this.songData.song;
       let creatorEmail = this.profile.email;
       this.$swal({

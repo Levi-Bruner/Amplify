@@ -1,7 +1,7 @@
-import {api} from "../services/AxiosService";
+import { api } from "../services/AxiosService";
 
 
-export const recommendStore ={
+export const recommendStore = {
   actions: {
     async getMusicByQueryRec({ commit, dispatch }, query) {
       try {
@@ -47,10 +47,13 @@ export const recommendStore ={
       dispatch("getRecommends")
     },
 
-    like({ commit, dispatch }, { newFavorite, id }) {
+    like({ commit, dispatch }, { newFavorite, id, sender }) {
       dispatch("addToFavorites", newFavorite)
-      dispatch("getPositivesForPut")
+      dispatch("likedRecommend", sender)
       dispatch("deleteRec", id)
     },
+    async likedRecommend({ commit, dispatch }, sender) {
+      let res = await api.put('profile/positive/' + sender)
+    }
   }
 }
