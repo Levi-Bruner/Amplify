@@ -7,6 +7,27 @@
         </i>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <div v-if=" profile.username == 'New User'">
+          <div class="card border-danger mb-3" style="max-width: 20rem;">
+            <div class="card-header" style="color:red;">Please Create A User Name!</div>
+            <div class="card-body">
+              <form @submit.prevent="changeUserName">
+                <input
+                  v-model="newUsername.body"
+                  type="text"
+                  placeholder="Enter New User Name Here..."
+                  rows="1"
+                  class="col-12"
+                />\
+                <button type="submit" class="btn-sm btn-outline-danger">Danger</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-12 text-center" style="padding-top: 4em;">
       <h3 class="text-light">
         Welcome
@@ -70,7 +91,8 @@ export default {
   },
   data() {
     return {
-      query: ""
+      query: "",
+      newUsername: {}
     };
   },
   computed: {
@@ -87,6 +109,11 @@ export default {
   methods: {
     searchiTunes() {
       this.$store.dispatch("getMusicByQuery", this.query);
+    },
+
+    changeUserName() {
+      let body = this.newUsername.body;
+      this.$store.dispatch("changeUserName", body);
     }
   },
   components: {

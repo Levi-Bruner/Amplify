@@ -82,6 +82,11 @@ export default new Vuex.Store({
         })
       }
     },
+    async changeUserName({ commit, dispatch }, body) {
+
+      let res = await api.put("profile/username", { username: body })
+      commit("setProfile", res.data)
+    },
     async getTotalForPut({ commit, dispatch }) {
       //1
       let resT = await api.get("profile")

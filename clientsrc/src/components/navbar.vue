@@ -1,9 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
-      <img src="../assets/amplify2.png" class="img-fluid our-logo" alt />
+      <img src="../assets/amplify8.png" class="img-fluid our-logo" alt />
       <!-- ../assets/pop.png -->
-      <span style="color:purple">Amplify</span>
     </router-link>
     <button
       class="navbar-toggler"
