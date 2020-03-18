@@ -5,7 +5,7 @@
         <h1>My Favorites</h1>
 
         <form class="row justify-content-center" @submit.prevent="searchFavorites">
-          <input class="input" type="text" placeholder="search for tracks" v-model="query" />
+          <input class="input" type="text" placeholder="search within favorites" v-model="query" />
           <button class="search btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
