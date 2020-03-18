@@ -76,11 +76,10 @@ export default new Vuex.Store({
         })
       }
     },
-    async createNewUsername({ commit, dispatch }, body) {
+    async changeUserName({ commit, dispatch }, body) {
 
-      let res = await api.put("profile/username", { body }
-
-      )
+      let res = await api.put("profile/username", { username: body })
+      commit("setProfile", res.data)
     },
     async getTotalForPut({ commit, dispatch }) {
       //1
