@@ -2,7 +2,6 @@ import Vue from "vue";
 import Vuex, {
   Store
 } from "vuex";
-import Axios from "axios";
 import router from "../router";
 import Song from "../models/song";
 import {api} from "../services/AxiosService";
@@ -89,7 +88,6 @@ export default new Vuex.Store({
         // debugger
         let objProp = { totalRecommends: (totalRec + 1) }
         let res = await api.put("profile/total", objProp)
-        //NOTE Dieter sockets
         commit("setProfile", res.data)
       } catch (error) {
 
@@ -107,7 +105,6 @@ export default new Vuex.Store({
         //debugger
         let objProp = { positiveRecommend: (posRec + 1) }
         let res = await api.put("profile/positive", objProp)
-        //NOTE Dieter sockets
         commit("setProfile", res.data)
       } catch (error) {
 

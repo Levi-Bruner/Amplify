@@ -25,8 +25,6 @@ export class RecommendsController extends BaseController {
       .delete('/:id', this.delete)
 
   }
-
-
   async getAll(req, res, next) {
     try {
       let data = await recommendsService.getAll(req.userInfo.email)
@@ -44,7 +42,6 @@ export class RecommendsController extends BaseController {
       next(error)
     }
   }
-
   async getByRecevierEmail(req, res, next) {
     try {
       let data = await recommendsService.getByRecevierEmail(req.userInfo.email)
@@ -53,8 +50,6 @@ export class RecommendsController extends BaseController {
       next(error)
     }
   }
-
-
   async create(req, res, next) {
     try {
       req.body.creatorEmail = req.userInfo.email
@@ -65,9 +60,6 @@ export class RecommendsController extends BaseController {
       next(error)
     }
   }
-
-
-
   async delete(req, res, next) {
     try {
       await recommendsService.delete(req.params.id, req.userInfo.email)
