@@ -36,6 +36,12 @@ export default new Vuex.Store({
     setRecommends(state, recommends) {
       state.recommendedSongs = recommends
     },
+    addRecommends(state, recommends) {
+      state.recommendedSongs.push(recommends)
+    },
+    addPositive(state, score) {
+      state.profile.positiveRecommend = score
+    }
   },
   actions: {
     setBearer({ }, bearer) {
@@ -90,7 +96,6 @@ export default new Vuex.Store({
     async scoreTotalRec({ commit, dispatch }, totalRec) {
       try {
         //2
-        // debugger
         let objProp = { totalRecommends: (totalRec + 1) }
         let res = await api.put("profile/total", objProp)
         commit("setProfile", res.data)
@@ -103,11 +108,12 @@ export default new Vuex.Store({
       let resT = await api.get("profile")
       dispatch("scoreGoodRec", resT.data.positiveRecommend)
     },
-
+    updateScore({ commit, dispatch }, payload) {
+      console.log(payload)
+    },
     async scoreGoodRec({ commit, dispatch }, posRec) {
       try {
         //2
-        //debugger
         let objProp = { positiveRecommend: (posRec + 1) }
         let res = await api.put("profile/positive", objProp)
         commit("setProfile", res.data)

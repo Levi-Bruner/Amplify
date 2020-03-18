@@ -10,7 +10,7 @@ export class ProfilesController extends BaseController {
     super("api/profile");
     this.router
       .use(auth0Provider.getAuthorizedUserInfo)
-      .put("/positive", this.editPositive)
+      .put("/positive/:senderEmail", this.editPositive)
       .put("/total", this.editTotal)
       .put("/username", this.editUsername)
       .get("", this.getUserProfile)
@@ -27,10 +27,12 @@ export class ProfilesController extends BaseController {
   }
   async editPositive(req, res, next) {
     try {
-      let data = req.body.positiveRecommend
-      let postive = await profilesService.edit(req.userInfo.email, data)
-      socketService.messageRoom(data.sender, "newPositiveScore", data)
-      res.send(postive)
+      let profile = await profilesService.addPositive(req.params.senderEmail)
+      // let data = req.body.positiveRecommend
+      // let postive = await profilesService.edit(req.userInfo.email, data)
+      // @ts-ignore
+      socketService.messageRoom(profile.email, "newPositiveScore", profile.positiveRecommend)
+      res.send("success")
     } catch (error) { next(error) }
   }
   async editUsername(req, res, next) {

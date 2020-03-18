@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext";
+import { BadRequest } from "../utils/Errors";
 
 // Private Methods
 
@@ -42,6 +43,16 @@ function sanitizeBody(body) {
 }
 
 class ProfileService {
+  async addPositive(email) {
+    let profile = await dbContext.Profile.findOne({ email })
+    if (!profile) {
+      throw new BadRequest("Invalid Id")
+    }
+    // @ts-ignore
+    profile.positiveRecommend++
+    await profile.save()
+    return profile;
+  }
   async edit(email, data) {
     let positive = await dbContext.Profile.findOneAndUpdate({ email }, { positiveRecommend: data }, { new: true })
     return positive;
