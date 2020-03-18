@@ -74,6 +74,7 @@ export default {
       if (this.$auth.isAuthenticated) {
         this.$store.dispatch("setBearer", this.$auth.bearer);
         this.$store.dispatch("getProfile");
+        this.$store.dispatch("joinRoom", this.$auth.userInfo.email);
       }
     },
     async logout() {

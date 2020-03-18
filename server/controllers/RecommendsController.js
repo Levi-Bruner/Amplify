@@ -4,6 +4,8 @@ import auth0provider from "@bcwdev/auth0provider";
 import {
   recommendsService
 } from '../services/RecommendsService'
+import socketService from "../services/SocketService";
+
 
 
 
@@ -20,11 +22,9 @@ export class RecommendsController extends BaseController {
       .get('/:title', this.getByTitle)
       //.post('/', this.getByRecevierEmail)
       .post('', this.create)
-      .delete('/:id ', this.delete)
+      .delete('/:id', this.delete)
 
   }
-
-
   async getAll(req, res, next) {
     try {
       let data = await recommendsService.getAll(req.userInfo.email)
@@ -42,7 +42,6 @@ export class RecommendsController extends BaseController {
       next(error)
     }
   }
-
   async getByRecevierEmail(req, res, next) {
     try {
       let data = await recommendsService.getByRecevierEmail(req.userInfo.email)
@@ -51,20 +50,16 @@ export class RecommendsController extends BaseController {
       next(error)
     }
   }
-
-
   async create(req, res, next) {
     try {
       req.body.creatorEmail = req.userInfo.email
-      let data = await recommendsService.create(req.body)
+      let data = await recommendsService.create(req.body);
+      socketService.messageRoom(data["receiver"], "newRec", data);
       return res.status(201).send(data)
     } catch (error) {
       next(error)
     }
   }
-
-
-
   async delete(req, res, next) {
     try {
       await recommendsService.delete(req.params.id, req.userInfo.email)
