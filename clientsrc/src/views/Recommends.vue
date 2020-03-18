@@ -8,8 +8,8 @@
     <div id="search" class="row text-center text-light">
       <div class="col-12 justify-content-center">
         <form class="row justify-content-center p-3" @submit.prevent="searchRecommends">
-          <input class type="text" placeholder="search for tracks" v-model="query" />
-          <button class="btn btn-secondary" type="submit">Search</button>
+          <input class="input" type="text" placeholder="search for tracks" v-model="query" />
+          <button class="search btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     recommendedSongs() {
-      return this.$store.state.recommendedSongs;
+      return this.$store.state.recommendedSongs.reverse();
     },
     searchedSongs() {
       return this.$store.state.searchedSongs;
@@ -59,5 +59,14 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
+.input {
+  height: 4em;
+  width: 100%;
+  max-width: 20rem;
+}
+.search {
+  width: 100%;
+  max-width: 20rem;
+}
 </style>

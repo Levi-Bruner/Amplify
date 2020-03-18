@@ -15,7 +15,7 @@
         <p>{{songData.artist}}</p>
         <p>{{songData.album}}</p>
       </div>
-      <div class="col-12">
+      <div class="col-12 audio">
         <audio controls>
           <source :src="songData.preview" type="audio/ogg" />
         </audio>
@@ -87,5 +87,10 @@ export default {
 <style scoped>
 .bg-pers {
   background-color: rgba(162, 51, 218, 0.35);
+}
+@media only screen and (min-width: 768px) {
+  .audio {
+    padding-left: 30vw;
+  }
 }
 </style>

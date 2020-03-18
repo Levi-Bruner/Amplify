@@ -14,8 +14,30 @@
       <img class="rounded text-center" style="display: inline-flex;
 }" :src="profile.picture" alt />
       <p>{{ profile.email }}</p>
-      <div class="col-3">
-        <p>Score {{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</p>
+      <div class="row justify-content-center">
+        <div class="col-3">
+          Enjoyed:
+          <br />
+          <h2 class="score">{{profile.positiveRecommend}}</h2>
+        </div>
+        <div class="col-1">
+          <br />
+          <h2 class="score">/</h2>
+        </div>
+        <div class="col-3">
+          Sent:
+          <br />
+          <h2 class="score">{{profile.totalRecommends}}</h2>
+        </div>
+        <div class="col-1">
+          <br />
+          <h2 class="score">=</h2>
+        </div>
+        <div class="col-3">
+          Score:
+          <br />
+          <h2 class="score">{{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</h2>
+        </div>
       </div>
     </div>
 
@@ -24,22 +46,8 @@
 }">
         <div class="col-12 justify-content-center">
           <form class="row justify-content-center" @submit.prevent="searchiTunes">
-            <input
-              class
-              type="text"
-              style="height: 4em;
-              width: -webkit-fill-available;
-              max-width: 20rem"
-              placeholder="Search For Tracks..."
-              v-model="query"
-            />
-            <button
-              class="btn btn-outline-success"
-              style="width: -webkit-fill-available;
-              max-width: 20rem
-}"
-              type="submit"
-            >Search</button>
+            <input class="input" type="text" placeholder="Search For Tracks..." v-model="query" />
+            <button class="search btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </div>
@@ -88,5 +96,17 @@ img {
 }
 .my-img {
   max-width: 70%;
+}
+.input {
+  height: 4em;
+  width: 100%;
+  max-width: 20rem;
+}
+.search {
+  width: 100%;
+  max-width: 20rem;
+}
+.score {
+  color: teal;
 }
 </style>
