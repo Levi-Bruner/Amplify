@@ -11,7 +11,7 @@ import { onAuth } from "@bcwdev/auth0-vue";
 export default {
   name: "App",
   async beforeCreate() {
-     this.$store.dispatch("initalizeSocket");
+    this.$store.dispatch("initalizeSocket");
     await onAuth();
     if (this.$auth.isAuthenticated) {
       this.$store.dispatch("setBearer", this.$auth.bearer);
@@ -27,9 +27,7 @@ export default {
 
 <style>
 .bg-whole {
-  /* background-color: black; */
-  background-image: url(https://silviahartmann.com/background-tile-art/images/black_water_tile.jpg);
-  /* filter: blur(10px); */
+  background-image: url("./assets/background.jpg");
   min-height: 100vh;
   height: 100%;
 }

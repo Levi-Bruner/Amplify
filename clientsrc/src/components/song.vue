@@ -1,5 +1,5 @@
 <template>
-  <div class="col-11 song">
+  <div class="col-11 col-md-8 song">
     <div class="row bg-pers p-3">
       <div class="col-12 text-center pb-3">
         <button class="btn btn-sm btn-primary" @click="recommendTo">recommend to...</button>
@@ -15,7 +15,7 @@
         <p>{{songData.artist}}</p>
         <p>{{songData.album}}</p>
       </div>
-      <div class="col-12 audio">
+      <div class="col-12 text-center audio">
         <audio controls>
           <source :src="songData.preview" type="audio/ogg" />
         </audio>
@@ -87,10 +87,5 @@ export default {
 <style scoped>
 .bg-pers {
   background-color: rgba(162, 51, 218, 0.35);
-}
-@media only screen and (min-width: 768px) {
-  .audio {
-    padding-left: 30vw;
-  }
 }
 </style>

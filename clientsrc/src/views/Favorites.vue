@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid text-center">
-    <div id="search" class="row text-light p-3">
+    <div id="search" class="row text-light p-3 pb-4">
       <div class="col-12 justify-content-center">
         <h1>My Favorites</h1>
 
