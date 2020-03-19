@@ -59,7 +59,11 @@
         <div class="col-3">
           Score:
           <br />
-          <h2 class="score">{{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</h2>
+          <h2 class="score" v-if="profile.totalRecommends == 0">0%</h2>
+          <h2
+            class="score"
+            v-else
+          >{{Math.round(100*(profile.positiveRecommend/profile.totalRecommends))}}%</h2>
         </div>
       </div>
     </div>
