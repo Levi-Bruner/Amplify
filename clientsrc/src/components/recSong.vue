@@ -87,7 +87,7 @@ export default {
         "Your friend is happy to hear you like their recommendation, it has been saved in your favorites!",
         "success"
       );
-      debugger;
+      // passes debugger;
       this.newFavorite = {
         artist: this.songData.song.artist,
         album: this.songData.song.album,

@@ -16,11 +16,20 @@ export const favoriteStore = {
       debugger
       let resF = await api.get("favorites")
       let id = newFavorite.id
-      let thing = resF.data.filter(o => Object.keys(o).some(k => o[k].includes(id)))
-      let res = await api.post("favorites", {
-        Song: newFavorite
-      })
-      commit("addFavorite", res.data)
+      let thing = resF.data.filter(h => h.Song.id = id);
+      console.log(thing)
+      if (thing.length == 0) {
+        let res = await api.post("favorites", {
+          Song: newFavorite
+        })
+        commit("addFavorite", res.data)
+      } else {
+        console.log("already in favorites")
+      }
+      // let res = await api.post("favorites", {
+      //   Song: newFavorite
+      // })
+      // commit("addFavorite", res.data)
     },
 
 
