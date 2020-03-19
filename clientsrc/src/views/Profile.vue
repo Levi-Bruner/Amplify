@@ -2,9 +2,12 @@
   <div class="container-fluid about text-light">
     <div class="row justify-content-between pt-2">
       <div class="col-3">
+        <router-link :to="{ name: 'Recommends' }" style="color: white">
         <i class="icon-large far fa-bell fa-3x">
+          
           <span v-if="recommendedSongs.length > 0" class="notify">{{recommendedSongs.length}}</span>
         </i>
+</router-link>
       </div>
     </div>
     <div class="row">
