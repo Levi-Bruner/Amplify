@@ -66,13 +66,14 @@ export default {
       this.$store.dispatch("deleteFavorite", this.songData.id);
     },
     addToFavorites() {
+      // passes debugger;
       this.newFavorite = {
         artist: this.songData.song.artist,
         album: this.songData.song.album,
         title: this.songData.song.title,
         preview: this.songData.song.preview,
         price: this.songData.song.price,
-        songId: this.songData.song.id,
+        id: this.songData.song.id,
         albumArt: this.songData.song.albumArt,
         albumArtSmall: this.songData.song.albumArtSmall,
         albumArtLarge: this.songData.song.albumArtLarge
@@ -86,13 +87,14 @@ export default {
         "Your friend is happy to hear you like their recommendation, it has been saved in your favorites!",
         "success"
       );
+      // passes debugger;
       this.newFavorite = {
         artist: this.songData.song.artist,
         album: this.songData.song.album,
         title: this.songData.song.title,
         preview: this.songData.song.preview,
         price: this.songData.song.price,
-        songId: this.songData.song.id,
+        id: this.songData.song.id,
         albumArt: this.songData.song.albumArt,
         albumArtSmall: this.songData.song.albumArtSmall,
         albumArtLarge: this.songData.song.albumArtLarge
