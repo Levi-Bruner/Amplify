@@ -6,7 +6,7 @@ export default class Song {
     this.title = data.title || data.trackName;
     this.preview = data.preview || data.previewUrl;
     this.price = data.price || data.trackPrice;
-    this.id = data._id || data.trackId;
+    this.id = data.id || data.trackId;
     this.albumArt =
       data.albumArt || data.artworkUrl100.replace(/100x100/g, "300x300");
     this.albumArtSmall = this.albumArt.replace(/300x300/g, "90x90");

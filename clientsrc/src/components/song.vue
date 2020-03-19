@@ -48,13 +48,14 @@ export default {
   },
   methods: {
     addToFavorites() {
+      //checked song.id passes
       this.newFavorite = {
         artist: this.songData.artist,
         album: this.songData.album,
         title: this.songData.title,
         preview: this.songData.preview,
         price: this.songData.price,
-        songId: this.songData.id,
+        id: this.songData.id,
         albumArt: this.songData.albumArt,
         albumArtSmall: this.songData.albumArtSmall,
         albumArtLarge: this.songData.albumArtLarge
