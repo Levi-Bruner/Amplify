@@ -24,7 +24,7 @@
                   rows="1"
                   class="col-12"
                 />\
-                <button type="submit" class="btn-sm btn-outline-danger">Danger</button>
+                <button type="submit" class="btn-sm btn-outline-danger">OK</button>
               </form>
             </div>
           </div>
@@ -74,7 +74,7 @@
     <div class="col-12 text-center">
       <div id="search" class="row" style="padding-top: 2em;
 }">
-        <div class="col-12 justify-content-center">
+        <div class="col-12 justify-content-center pb-4">
           <form class="row justify-content-center" @submit.prevent="searchiTunes">
             <input class="input" type="text" placeholder="Search For Tracks..." v-model="query" />
             <button class="search btn btn-outline-success" type="submit">Search</button>

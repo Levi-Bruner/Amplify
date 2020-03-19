@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'Home' }">
-          <router-link :to="{ name: 'Home' }" class="nav-link" style="color:purple">Home</router-link>
+          <!-- <router-link :to="{ name: 'Home' }" class="nav-link" style="color:purple">Home</router-link> -->
         </li>
         <li
           class="nav-item"
@@ -87,7 +87,7 @@ export default {
 <style scoped>
 .our-logo {
   width: 10vw;
-  max-width: 50px;
+  max-width: 100px;
   height: auto;
 }
 </style>

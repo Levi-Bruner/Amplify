@@ -1,9 +1,8 @@
 <template>
-  <div class="col-11 song">
+  <div class="col-11 col-md-8 song">
     <div class="row bg-pers p-3">
       <div class="col-12 text-center pb-3">
         <button class="btn btn-sm btn-primary" @click="recommendTo">recommend to...</button>
-        <button class="btn btn-sm btn-secondary" @click="addToFavorites">add to favorites</button>
       </div>
 
       <div class="col-12">
@@ -26,7 +25,7 @@
           <source :src="songData.song.preview" type="audio/ogg" />
         </audio>
       </div>
-      <div class="col-12 buttons">
+      <div class="col-12 text-center buttons">
         <button
           class="btn btn-info btn-outline-success text-light col-6 col-md-4"
           @click="like"
@@ -128,7 +127,6 @@ export default {
         "We won't tell them that you don't care for this song!",
         "info"
       );
-      //debugger;
       this.$store.dispatch("deleteRec", this.songData.id);
     }
   },
@@ -141,10 +139,5 @@ export default {
 <style scoped>
 .bg-pers {
   background-color: rgba(162, 51, 218, 0.35);
-}
-@media only screen and (min-width: 768px) {
-  .buttons {
-    padding-left: 22vw;
-  }
 }
 </style>
