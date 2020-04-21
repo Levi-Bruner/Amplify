@@ -4,6 +4,7 @@ import ProfileSchema from "../models/Profile";
 import FavoriteSchema from "../models/Favorites";
 import RecommendSchema from "../models/Recommends";
 import SongSchema from "../models/Songs";
+import FriendSchema from "../models/Friend";
 
 
 
@@ -13,6 +14,7 @@ class DbContext {
   Favorites = mongoose.model("Favorite", FavoriteSchema);
   Recommends = mongoose.model("Recommend", RecommendSchema);
   Songs = mongoose.model("Song", SongSchema);
+  Friends = mongoose.model("Friend", FriendSchema)
 
 
 }

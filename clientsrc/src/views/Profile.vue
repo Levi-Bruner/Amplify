@@ -7,7 +7,9 @@
             <span v-if="recommendedSongs.length > 0" class="notify">{{recommendedSongs.length}}</span>
           </i>
         </router-link>
-        <i class="icon-large far fa-address-book fa-3x"></i>
+        <router-link :to="{ name: 'FriendsList' }" style="color: white">
+          <i class="icon-large far fa-address-book fa-3x"></i>
+        </router-link>
       </div>
     </div>
     <div class="row">

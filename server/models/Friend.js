@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import Recommend from "../models/Recommends"
 const Schema = mongoose.Schema;
 
 const Friend = new Schema(
   {
+    owner: { type: String },
     username: { type: String },
     email: { type: String },
     totalRecommends: { type: Number, default: 0 },
