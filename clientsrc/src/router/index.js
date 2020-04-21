@@ -6,6 +6,7 @@ import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
 import Recommends from "../views/Recommends.vue";
 import Favorites from "../views/Favorites.vue";
+import FriendsList from "../views/FriendsList.vue"
 import { authGuard } from "@bcwdev/auth0-vue";
 
 Vue.use(VueRouter);
@@ -34,6 +35,12 @@ const routes = [
     component: Recommends,
     beforeEnter: authGuard
   },
+  {
+    path: "/friends",
+    name: "FriendsList",
+    component: FriendsList,
+    beforeEnter: authGuard
+  }
 ];
 
 const router = new VueRouter({

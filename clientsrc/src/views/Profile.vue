@@ -3,11 +3,11 @@
     <div class="row justify-content-between pt-2">
       <div class="col-3">
         <router-link :to="{ name: 'Recommends' }" style="color: white">
-        <i class="icon-large far fa-bell fa-3x">
-          
-          <span v-if="recommendedSongs.length > 0" class="notify">{{recommendedSongs.length}}</span>
-        </i>
-</router-link>
+          <i class="icon-large far fa-bell fa-3x">
+            <span v-if="recommendedSongs.length > 0" class="notify">{{recommendedSongs.length}}</span>
+          </i>
+        </router-link>
+        <i class="icon-large far fa-address-book fa-3x"></i>
       </div>
     </div>
     <div class="row">
@@ -154,5 +154,8 @@ img {
   border-radius: 50%;
   background: rgba(255, 0, 0, 0.5);
   padding: 3px;
+}
+.friends {
+  padding-top: 2vh;
 }
 </style>

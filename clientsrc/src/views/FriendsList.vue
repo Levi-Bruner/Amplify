@@ -1,0 +1,10 @@
+<template></template>
+
+<script>
+export default {
+  name: "FriendsList"
+};
+</script>
+
+<style>
+</style>
